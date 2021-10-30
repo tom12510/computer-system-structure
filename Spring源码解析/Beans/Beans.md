@@ -117,11 +117,9 @@
 > 					return (T) parentBeanFactory.getBean(nameToLookup);
 > 				}
 > 			}
-> 
 > 			if (!typeCheckOnly) {
 > 				markBeanAsCreated(beanName);
 > 			}
-> 
 > 			StartupStep beanCreation = this.applicationStartup.start("spring.beans.instantiate")
 > 					.tag("beanName", name);
 > 			try {
