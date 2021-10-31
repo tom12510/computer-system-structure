@@ -30,7 +30,7 @@
 >
 > ![image-20211030160003874](image-20211030160003874.png) 
 >
->  
+> 
 >
 > **XmlBeanFactory**
 >
@@ -56,7 +56,7 @@
 > 				}
 > 			}
 > 		}
->    
+> 
 > 		preProcessXml(root);
 > 		parseBeanDefinitions(root, this.delegate);
 > 		postProcessXml(root);
@@ -64,9 +64,17 @@
 > 	}
 > ~~~
 >
->  
+> 
 >
 > **Bean的加载**
+>
+> 1. _beanName 获取名字转换_
+> 2. 尝试从缓存中获取已加载单例(getSingleton)  
+> 3. bean实例化 (getObjectForBeanInstance)
+> 4. 依赖检查 isPrototypeCurrentlyInCreation(beanName)
+> 5. 寻找依赖(A依赖B,首先加载B)
+> 6. scope进行bean创建
+> 7. 类型转换(Spring中提供类型转换器)
 >
 > ~~~java
 > protected <T> T doGetBean(
@@ -75,6 +83,7 @@
 > 		String beanName = transformedBeanName(name);
 > 		Object beanInstance;
 > 		// Eagerly check singleton cache for manually registered singletons.
+>       
 > 		Object sharedInstance = getSingleton(beanName);
 > 		if (sharedInstance != null && args == null) {
 > 			if (logger.isTraceEnabled()) {
@@ -218,7 +227,13 @@
 > 	}
 > ~~~
 >
-> 
+> __FactoryBean接口__
+>
+> > ![image-20211031125427080](image-20211031125427080.png) 
+> >
+> > getObject() 返回FactoryBean中创建bean的实例,isSingleton()返回true 则实例会放到Spring容器单例缓存池中
+> >
+> > getObjectType() 返回FactoryBean创建bean类型
 
 
 
