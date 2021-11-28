@@ -140,7 +140,98 @@
 >
 > - **事务控制语言(TCL)**
 >
+> > - COMMIT
+> > - SAVEPOINT (保存点)
+> > - ROLLBACK (可以回滚到保存点数据)
+>
 > - **数据定义语言(DDL)**
+>
+> > |        数据类型         | 参数             |                             描述                             |
+> > | :---------------------: | ---------------- | :----------------------------------------------------------: |
+> > |         char(n)         | 1$\le$n$\le$2000 |                     指定**固定字符长度**                     |
+> > |       varchar2(n)       | 1$\le$n$\le$4000 |                        可变长的字符串                        |
+> > |       number(m,n)       | m$\gt$n          |                       m数字位数 n 小数                       |
+> > |          date           |                  |            公元前4712年1月1日到公元4712年12月31日            |
+> > |          long           |                  | 可变长字符列，最大长度限制是2GB，**用于不需要作字符串搜索**的长串数据 |
+> > |         raw(n)          | 1$\le$n$\le$2000 |   可变长二进制数据，在具体定义字段的时候必须指明最大长度n    |
+> > |        long raw         |                  | 可变长二进制数据，最大长度是2GB。Oracle 8i用这种格式来保存较大的图形文件或带格式的文本文件，如Miceosoft Word文档，以及音频、视频等非文本文件。 |
+> > | blob<br/>clob<br/>nclob |                  | 用来保存较大的图形文件或带格式的文本文件，如Miceosoft Word文档，以及音频、视频等非文本文件，最大长度是4GB。<br/>LOB有几种类型 |
+> >
+> > **简表语句**
+> >
+> > ~~~sql
+> > -- Create table
+> > create table ENERGY_REGION
+> > (
+> >   code          VARCHAR2(12),
+> >   parent_code   VARCHAR2(12),
+> >   ancestors     VARCHAR2(255),
+> >   name          VARCHAR2(255),
+> >   province_code VARCHAR2(12),
+> >   province_name VARCHAR2(255),
+> >   city_code     VARCHAR2(12),
+> >   city_name     VARCHAR2(255),
+> >   district_code VARCHAR2(12),
+> >   district_name VARCHAR2(255),
+> >   town_code     VARCHAR2(12),
+> >   town_name     VARCHAR2(255),
+> >   village_code  VARCHAR2(12),
+> >   village_name  VARCHAR2(255),
+> >   "level"       INTEGER,
+> >   sort          INTEGER,
+> >   remark        VARCHAR2(255)
+> > )
+> > tablespace SYSTEM
+> >   pctfree 10
+> >   pctused 40
+> >   initrans 1
+> >   maxtrans 255
+> >   storage
+> >   (
+> >     initial 64K
+> >     next 1M
+> >     minextents 1
+> >     maxextents unlimited
+> >   );
+> > -- Add comments to the columns 
+> > comment on column ENERGY_REGION.code
+> >   is '城市编码';
+> > comment on column ENERGY_REGION.parent_code
+> >   is '父类编码';
+> > comment on column ENERGY_REGION.ancestors
+> >   is '经纬度';
+> > comment on column ENERGY_REGION.name
+> >   is '城市名称';
+> > comment on column ENERGY_REGION.province_code
+> >   is '省级编码';
+> > comment on column ENERGY_REGION.province_name
+> >   is '省级名称';
+> > comment on column ENERGY_REGION.city_code
+> >   is '市区编码';
+> > comment on column ENERGY_REGION.city_name
+> >   is '市区名称';
+> > comment on column ENERGY_REGION.district_code
+> >   is '县级编码';
+> > comment on column ENERGY_REGION.district_name
+> >   is '县级名称';
+> > comment on column ENERGY_REGION.town_code
+> >   is '镇级区划编号';
+> > comment on column ENERGY_REGION.town_name
+> >   is '镇级名称';
+> > comment on column ENERGY_REGION.village_code
+> >   is '村级区划编号';
+> > comment on column ENERGY_REGION.village_name
+> >   is '村级名称';
+> > comment on column ENERGY_REGION."level"
+> >   is '层级';
+> > comment on column ENERGY_REGION.sort
+> >   is '排序';
+> > comment on column ENERGY_REGION.remark
+> >   is '备注';
+> > 
+> > ~~~
+> >
+> > 
 >
 > - **数据控制语言(DCL) 权限控制**
 >
