@@ -122,7 +122,21 @@
 >
 > - **数据操作语言(DML)**
 >
-> > 
+> > - **INSERT 语法**
+> >
+> >   > Insert into table_name [(column_name)] values()   表达式中可以存在 DEFAULT
+> >   >
+> >   > Insert into table_name[(column_name)] (selectSubquery) 
+> >   
+> > - **UPDATE语句**
+> >
+> > > Update table_name set column_name = express
+> > >
+> > > *更新字符列或者时间类型是,使用单引号*
+> >
+> > - **DELETE与TRUNCATE**
+> >
+> > > TRUNCATE 性能比Delete 高
 >
 > - **事务控制语言(TCL)**
 >
@@ -130,4 +144,4 @@
 >
 > - **数据控制语言(DCL) 权限控制**
 >
->   
+> 
