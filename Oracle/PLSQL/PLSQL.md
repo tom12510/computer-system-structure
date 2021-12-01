@@ -61,6 +61,7 @@
 > >   > *游标是由Oracle每次执行SQL语句时自动声明的。用户不会意识到这种情况的发生，并且不能控制或处理隐式游标中的信息*
 > >   >
 > >   > - 与DML语言有关 UPDATE DELETE 操作影响的行集的游标
+> >   > - 使用SQL代替游标名
 > >
 > > - 显示（explicit)
 > >
@@ -77,6 +78,59 @@
 > > > > 每个fetch命令执行后,活动集指针就向下移动一行,直到返回为止
 > > >
 > > > close
+> > >
+> > > **游标声明**
+> > >
+> > > ~~~PLSQL
+> > > -- 声明游标并绑定sql
+> > > cursor cur_name is sql ;
+> > > -- 声明变量(游标绑定变量)
+> > > var_name cur_name%rowtype
+> > > ------------------------------------
+> > > -- 声明游标类型
+> > > cursor cur_name(v_name table.column%type) is sql 
+> > > -- 打开游标
+> > > open cur_name(1);
+> > > ------------------------------------
+> > > -- 弱类型游标 无return
+> > > type cur_name is ref cursor;
+> > > -- 声明游标变量
+> > > v_name cur_name;
+> > > -- 将游标绑定sql   using 将sql中字符以变量形式占位
+> > > open v_name for 'select * from table where column = :v_name' using v_name; 
+> > > -- 赋值变量
+> > > fetch cur_name into v_name
+> > > -------------------------------------
+> > > --强类型游标
+> > > type cur_name is ref cursor return table%rowtype;
+> > > v_cur cur_name;
+> > > open v_cur for sql;
+> > > -------------------------------------
+> > > -- 系统类型 等同于下列定义语句
+> > >  -- type cur_name is ref cursor;  v_name cur_name; 
+> > > cur_name sys_refcursor;
+> > > ~~~
+> > >
+> > > **游标循环**
+> > >
+> > > ~~~plsql
+> > > -- 批量处理
+> > > loop
+> > >  fetch v_cursor bulk collect into [...varname | table] limit number;
+> > >   exit when 条件;
+> > >    逻辑处理;
+> > > end loop;
+> > > -- 隐式游标
+> > > for item in (sql) loop
+> > >    --
+> > > end loop;
+> > > -- 单条处理
+> > > loop 
+> > >  fetch v_cursor into varname
+> > >  exit when 条件;
+> > >     逻辑处理;
+> > >     end loop;
+> > > ~~~
 > >
 > > **游标属性**
 > >
@@ -95,16 +149,16 @@
 > > >
 > > > %rowtype 声明单行**所有字段值**
 > > >
-> > > %record 声明部分字段
+> > > record **声明部分字段**
 > > >
 > > > ~~~plsql
-> > >  var_code energy_region.code%type;
-> > >  var_row  energy_region%rowtype;
-> > >  type region is RECORD(
-> > >     v_code energy_region.code%type,
-> > >     v_name energy_region.name%type
-> > >  );
-> > >  type_region region;
+> > > var_code energy_region.code%type;
+> > > var_row  energy_region%rowtype;
+> > > type region is RECORD(
+> > >  v_code energy_region.code%type,
+> > >  v_name energy_region.name%type
+> > > );
+> > > type_region region;
 > > > ~~~
 > > >
 > > > **整数类型**
@@ -119,34 +173,34 @@
 > > > varry  一维数组(单行单列) 
 > > >
 > > > ~~~plsql
-> > >  -- 定义一维数组类型
-> > >   type string_array is varray(10) of varchar2(200);
-> > >   -- 声明一维数组
-> > >   v_string_array string_array;
-> > >   -- 初始化数组
-> > >   v_string_array := string_array('a', 'b', 'c');
-> > >   -- 循环取值
-> > >   for i in v_string_array.first  ..  v_string_array.last loop
-> > >     dbms_output.put(v_string_array(i) || ' '); 
-> > >      END LOOP;
+> > > -- 定义一维数组类型
+> > > type string_array is varray(10) of varchar2(200);
+> > > -- 声明一维数组
+> > > v_string_array string_array;
+> > > -- 初始化数组
+> > > v_string_array := string_array('a', 'b', 'c');
+> > > -- 循环取值
+> > > for i in v_string_array.first  ..  v_string_array.last loop
+> > >  dbms_output.put(v_string_array(i) || ' '); 
+> > >   END LOOP;
 > > > ~~~
 > > >
 > > > table 多维数组(多行多列)
 > > >
 > > > ~~~plsql
 > > > -- 使用游标赋值
-> > >   cursor cur_region is select * from energy_region where rownum <10;
+> > > cursor cur_region is select * from energy_region where rownum <10;
 > > > -- 声明列字段
-> > >   type t_table is table of cur_region%rowtype;
+> > > type t_table is table of cur_region%rowtype;
 > > > -- 声明表
-> > >   v_table t_table;
+> > > v_table t_table;
 > > > -- 游标赋值
-> > >  FETCH cur_region BULK COLLECT INTO v_table;
+> > > FETCH cur_region BULK COLLECT INTO v_table;
 > > > -- 循环取值
-> > >  FOR i IN v_table.first .. v_table.last LOOP
-> > >     dbms_output.put_line('地区编码：' || v_table(i).code || ' , ' ||
-> > >                          '地区名称：' || v_table(i).name || ' , ' );
-> > >   END LOOP;
+> > > FOR i IN v_table.first .. v_table.last LOOP
+> > >  dbms_output.put_line('地区编码：' || v_table(i).code || ' , ' ||
+> > >                       '地区名称：' || v_table(i).name || ' , ' );
+> > > END LOOP;
 > > > ~~~
 > > >
 > > > **数组属性和相关函数**
@@ -168,6 +222,8 @@
 > > > | limit        | 返回 varry 集合的最大的元素个数，对 index by 无效            |
 > > > | next(x)      | 返回在第 x 个元素之后紧挨着它的元素下标(x+1)，若 x 是最后一个元素，则返回 null |
 > > > | prior(x)     | 返回在第x个元素之前紧挨着它的 元素下标(x-1)，如果 x 是第一个元素，则返回 null |
+> > >
+> > > 
 >
 > #### **PLSQL流程控制语句**
 >
