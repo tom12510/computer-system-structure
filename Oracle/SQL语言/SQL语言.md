@@ -274,16 +274,7 @@
 > > parent_code   VARCHAR2(12),
 > > ancestors     VARCHAR2(255),
 > > name          VARCHAR2(255),
-> > province_code VARCHAR2(12),
-> > province_name VARCHAR2(255),
-> > city_code     VARCHAR2(12),
-> > city_name     VARCHAR2(255),
-> > district_code VARCHAR2(12),
-> > district_name VARCHAR2(255),
-> > town_code     VARCHAR2(12),
-> > town_name     VARCHAR2(255),
-> > village_code  VARCHAR2(12),
-> > village_name  VARCHAR2(255),
+> > province_code VARCHAR2(12)    
 > > "level"       INTEGER,
 > > sort          INTEGER,
 > > remark        VARCHAR2(255)
@@ -301,22 +292,6 @@
 > > maxextents unlimited
 > > );
 > > -- Add comments to the columns 
-> > comment on column ENERGY_REGION.code
-> > is '城市编码';
-> > comment on column ENERGY_REGION.parent_code
-> > is '父类编码';
-> > comment on column ENERGY_REGION.ancestors
-> > is '经纬度';
-> > comment on column ENERGY_REGION.name
-> > is '城市名称';
-> > comment on column ENERGY_REGION.province_code
-> > is '省级编码';
-> > comment on column ENERGY_REGION.province_name
-> > is '省级名称';
-> > comment on column ENERGY_REGION.city_code
-> > is '市区编码';
-> > comment on column ENERGY_REGION.city_name
-> > is '市区名称';
 > > comment on column ENERGY_REGION.district_code
 > > is '县级编码';
 > > comment on column ENERGY_REGION.district_name
@@ -337,8 +312,8 @@
 > > is '备注';
 > > 
 > > ~~~
-> >
->
+> > 
+> 
 > - **数据控制语言(DCL) 权限控制**
->
+> 
 > 

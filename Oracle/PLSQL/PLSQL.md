@@ -132,13 +132,34 @@
 > > >     end loop;
 > > > ~~~
 > > >
-> > > **FOR UPDATE 游标**
+> > > **FOR UPDATE 行锁**
+> > >
+> > > *在更新数据时使用**for update** 语句将锁定查询中的行,完成更新/commit rollback 后自动解锁*
 > > >
 > > > ~~~plsql
-> > > cursor c_grade()
+> > > -- 锁住当前表中所有行数据
+> > > cursor c_region is select * from course for update;
+> > > -- 循环游标更新
+> > > for item in c_region
+> > > loop
+> > >  if item.code <200
+> > >  then 
+> > >   update course set cost = item.cost + 10 where code = item.code;
+> > >   end if;
+> > >   end loop;
 > > > ~~~
 > > >
-> > > 
+> > > **FOR UPDATE OF 列锁**
+> > >
+> > > *提交COMMIT进行解锁*
+> > >
+> > > ~~~plsql
+> > > cursor c_stud_zip is select a,b,c from A,B where A.a = B.b for update of a
+> > > ~~~
+> > >
+> > > **WHERE CURRENT OF**
+> > >
+> > > *更新游标读取的行(取消update中条件)*
 > >
 > > **游标属性**
 > >
