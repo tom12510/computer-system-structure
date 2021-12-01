@@ -184,8 +184,8 @@
 > > > var_code energy_region.code%type;
 > > > var_row  energy_region%rowtype;
 > > > type region is RECORD(
-> > >  v_code energy_region.code%type,
-> > >  v_name energy_region.name%type
+> > > v_code energy_region.code%type,
+> > > v_name energy_region.name%type
 > > > );
 > > > type_region region;
 > > > ~~~
@@ -210,8 +210,8 @@
 > > > v_string_array := string_array('a', 'b', 'c');
 > > > -- 循环取值
 > > > for i in v_string_array.first  ..  v_string_array.last loop
-> > >  dbms_output.put(v_string_array(i) || ' '); 
-> > >   END LOOP;
+> > > dbms_output.put(v_string_array(i) || ' '); 
+> > > END LOOP;
 > > > ~~~
 > > >
 > > > table 多维数组(多行多列)
@@ -227,8 +227,8 @@
 > > > FETCH cur_region BULK COLLECT INTO v_table;
 > > > -- 循环取值
 > > > FOR i IN v_table.first .. v_table.last LOOP
-> > >  dbms_output.put_line('地区编码：' || v_table(i).code || ' , ' ||
-> > >                       '地区名称：' || v_table(i).name || ' , ' );
+> > > dbms_output.put_line('地区编码：' || v_table(i).code || ' , ' ||
+> > >                    '地区名称：' || v_table(i).name || ' , ' );
 > > > END LOOP;
 > > > ~~~
 > > >
