@@ -1,141 +1,105 @@
-## Mysql逻辑架构
+## mysql架构
 
-> ![image-20211209162144950](image-20211209162144950.png) 
+> - **MYSQL组成**
 >
-> - **连接管理与安全性**
->
-> - **优化与执行**
->
-> - **并发控制**
->
->   - 读写锁
->
->     > 共享锁(shared lock) 读锁
->     >
->     > 排他锁(exclusive lock) 写锁
->
->   - 锁粒度(基于MYSQL引擎选择)
->
->     > 行锁(row lock) => InnoDB  XtraDB 
->     >
->     > > 最大程度支持并发
->     >
->     > 表锁(table lock)
->
-> - **事务** 
->
->   > - 原子(atomicity)  
->   > - 一致(consistency) 
->   > - 隔离(isolation) 
->   > - 持久性(durability)
+>   > ![image-20211209162144950](image-20211209162144950.png) 
 >   >
->   > 
+>   >  
 >   >
->   > **隔离级别**
+>   > ![image-20211228104450238](image-20211228104450238.png) 
 >   >
->   > - READ UNCOMMITTED
->   > - READ COMMITED 
->   > - REPEATABLE READ 可重复读 (在事务中语句查询的数据**内容一致**，幻读：一个事务在执行中读取到另一个事务**插入**已提交的数据，读取2次数据返回不一样）
->   > - SERIALIZABLE （避免幻读情况，**可以接受无并发场景**）
+>   > - 连接池组件
 >   >
->   > ![image-20211209170510875](image-20211209170510875.png) 
->   >
->   > -  死锁
->   >
->   >   > 多个事务加锁在同一个资源上,并**相互请求锁定**对方占用的资源
+>   >   > 不同客户端连接都会在服务器创建一个线程来执行SQL操作（*服务器会对连接线程进行缓存*）。
 >   >   >
->   >   > InnoDB处理死锁将持有少数行级排他锁进行事务回滚
->   >   
->   > - 事务日志
+>   >   > TCP/IP 套接字连接
+>   >   >
+>   >   > SOCKET 套接字连接
 >   >
->   >   > 先将操作的记录写在硬盘事务日志中(顺序I/O),在将内存中的数据进行更新在持久化到硬盘上
+>   > - 管理服务和工具组件
 >   >
->   > -  MYSQL中事务(InnoDB ，NDBCluster，XtraDB,PDXT)
+>   > - SQL接口
 >   >
->   >    > ~~~sql
->   >    >  -- 1表示开启  0 表示关闭
->   >    > show variables like 'AUTOCOMMIT'
->   >    > set autocommit = 1
->   >    > -- 配置当前会话隔离级别
->   >    > set session transaction isolation level read commited
->   >    > ~~~
+>   > - 查询分析
 >   >
->   > -  LOCK/UNLOCK TABLES  在服务层进行加锁 与存储引擎无关
->
-> - **多版本并发控制(MVCC)** 基于行锁控制
->
-> > MVCC通过数据时间点快照实现（根据事务开始时间，每个事务对同一张表，**同一时刻看到的数据可能不一样**）
-> >
-> > InnoDB 的MVCC实现过程
-> >
-> > - 每行记录存在两个隐藏列，包含行的创建时间(系统版本号)，和删除时间(系统版本号)
-> > - 每开始一个新事务,系统版本号自动递增
-> >
-> > InnoDB  repeatable read 隔离级别下 
-> >
-> > 查找时
-> >
-> > - InnoDB只查找版本**早于当前事务版本**的数据行（确保事务开始前存在，事务自身插入的行）
-> > - 行的删除版本未定义，或大于当前事务的版本号（确保事务读取到的行在**事务开始之前未被删除**） 
-> >
-> > 插入时
-> >
-> > - InnoDB为新插入的每一行保存当前系统版本号作为行号
-> >
-> > 删除时
-> >
-> > - InnoDB为删除的行每行保存当前系统版本号作为删除标识
-> >
-> > 修改时
-> >
-> > - 将当前行号保存到删除标识，在将当前系统号保存到行号
-> >
-> > MVCC只在REPEATABLE READ和READ COMMITTED 两个级别下兼容
->
-> **MYSQL存储引擎**
->
-> > Mysql将每个数据库保存作为目录，将数据库下的表.frm文件放在数据库目录下
-> >
-> > 查看表状态
-> >
-> > ~~~sql
-> > show table status like 'tablename';
-> > ~~~
-> >
-> > - Row_format 行格式   
-> >
-> >   > Dynamic 行长度可变（包含varchar blob类型字段）
-> >   >
-> >   > fixed（行长度固定）
-> >   >
-> >   > Compressed（压缩表）
-> >
-> > **InnoDB存储引擎**(处理大量短期事务)
-> >
-> > 
-> >
-> > **MyISAM存储引擎（全文索引，压缩，空间函数）**不支持事务和行级锁
-> >
-> > - 表存储  .MYD 和.MYI 分别存储数据文件和索引文件
-> >
-> > - 加锁并发
-> >
-> > - 修复（检查表错误）
-> >
-> > - 索引特性
-> >
-> >   > 延迟更新索引键
-> >   >
-> >   > 超长索引
-> >
-> > - MyISAM 压缩表
-> >
-> >   > 不修改的数据进行压缩处理
-> >
-> > **Archive引擎（适合日志采集）**
-> >
-> > > 只支持INSERT和SELECT操作
-> >
-> > **Blackhole引擎**
-> >
-> > **CSV引擎(处理CSV文件)**
+>   > - 缓冲
+>   >
+>   > - 插件式存储引擎
+>   >
+>   >   > - InnoDB存储引擎（支持行锁，外键），MVCC多版本并发控制，支持插入缓存，二次写，自适应哈希索引，预读等高性能和高可用功能。
+>   >   >
+>   >   > - MyISAM 引擎（不支持事务，表锁设计，全文索引） 
+>   >   >
+>   >   > - NDB存储引擎 （集群存储引擎）类似ORACLE的RAC集群
+>   >   > - Memory引擎（基于内存的存储）
+>   >   > - Archive （只支持Insert和Select操作）
+>   >   > - Maria （取代MyISAM设计）
+>   >   >
+>   >   > ![image-20211228110222606](image-20211228110222606.png) 
+>   >   >
+>   >   > 
+>   >
+>   > - 物理文件
+>   >
+>   >   - frm存放表结构，myd存放数据，myi存放索引，分区表文件使用#进行扩充
+>   >
+>   >   - .ibd 和ibdata文件，存放Innodb索引和数据文件
+>   >
+>   >   - error log  MYSQL异常日志
+>   >
+>   >   - binarg log 用于数据恢复，主从复制
+>   >
+>   >   - redo undo 事务提交/事务回滚日志
+>   >
+>   >   - slow query log 慢查询日志
+>   >
+>   >   - query log 慢查询日志
+>   >
+>   >   - mysql ，performance_schema，sakila，sys，world ,information_schema  
+>   >
+>   >     - **information_schema**   提供访问数据库的元数据（表名，列数据类型，访问权限） 等数据库维护信息
+>   >
+>   >       - | 表名                                  | 注释                                                         |
+>   >         | ------------------------------------- | ------------------------------------------------------------ |
+>   >         | SCHEMATA                              | 提供了当前mysql实例中所有数据库的信息。是show databases的结果取之此表 |
+>   >         | TABLES                                | 提供了关于数据库中的表的信息（包括视图）。详细表述了某个表属于哪个schema、表类型、表引擎、创建时间等信息。是show tables from schemaname的结果取之此表 |
+>   >         | COLUMNS                               | 提供了表中的列信息。详细表述了某张表的所有列以及每个列的信息。是show columns from schemaname.tablename的结果取之此表 |
+>   >         | STATISTICS                            | 提供了关于表索引的信息。是show index from schemaname.tablename的结果取之此表 |
+>   >         | USER_PRIVILEGES                       | 用户权限表:给出了关于全程权限的信息。该信息源自mysql.user授权表。是非标准表 |
+>   >         | SCHEMA_PRIVILEGES                     | 方案权限表:给出了关于方案（数据库）权限的信息。该信息来自mysql.db授权表。是非标准表 |
+>   >         | TABLE_PRIVILEGES                      | 表权限表:给出了关于表权限的信息。该信息源自mysql.tables_priv授权表。是非标准表 |
+>   >         | COLUMN_PRIVILEGES                     | 列权限表:给出了关于列权限的信息。该信息源自mysql.columns_priv授权表。是非标准表 |
+>   >         | CHARACTER_SETS                        | 字符集表:提供了mysql实例可用字符集的信息。是SHOW CHARACTER SET结果集取之此表 |
+>   >         | COLLATIONS                            | 提供了关于各字符集的对照信息                                 |
+>   >         | COLLATION_CHARACTER_SET_APPLICABILITY | 指明了可用于校对的字符集。这些列等效于SHOW COLLATION的前两个显示字段。 |
+>   >         | TABLE_CONSTRAINTS                     | 描述了存在约束的表。以及表的约束类型                         |
+>   >         | KEY_COLUMN_USAGE                      | 描述了具有约束的键列                                         |
+>   >         | ROUTINES                              | 提供了关于存储子程序（存储程序和函数）的信息。此时，ROUTINES表不包含自定义函数（UDF）。名为“mysql.proc name”的列指明了对应于INFORMATION_SCHEMA.ROUTINES表的mysql.proc表列 |
+>   >         | VIEWS                                 | 给出了关于数据库中的视图的信息。需要有show views权限，否则无法查看视图信息 |
+>   >         | TRIGGERS                              | 提供了关于触发程序的信息。必须有super权限才能查看该表        |
+>   >
+>   >     - ## performance_schema
+>   >
+>   >       - | 表名                              | 注释                                                         |
+>   >         | --------------------------------- | ------------------------------------------------------------ |
+>   >         | setup_table                       | 设置表，配置监控选项                                         |
+>   >         | current_events_table              | 记录当前那些thread 正在发生什么事情                          |
+>   >         | history_table                     | 发生的各种事件的历史记录表                                   |
+>   >         | summary_table                     | 对各种事件的统计表                                           |
+>   >         | setup_consumers\setup_instruments | 描述各种事件, 设置哪些事件能够被收集                         |
+>   >         | setup_instruments                 | 描述这个数据库下的表名以及是否开启监控                       |
+>   >         | setup_timers                      | 描述监控选项已经采样频率的时间间隔                           |
+>   >         | threads                           | 监控服务器所有连接                                           |
+>   >         | performance_timers                | 设置一些监控信息, 指定mysql服务可用的监控周期，CYCLE表示按每秒检测2603393034次, 目前 performance-schema 只支持’wait’时间的监控，代码树上 wait/ 下的函数都可以监控到 |
+>   >
+>   >     - **MYSQL**
+>   >
+>   >       - | 表名         | 注释                               |
+>   >         | ------------ | ---------------------------------- |
+>   >         | user         | 用户列、权限列、安全列、资源控制列 |
+>   >         | db           | 用户列、权限列                     |
+>   >         | host         |                                    |
+>   >         | table_priv   |                                    |
+>   >         | columns_priv |                                    |
+>   >         | proc_priv    |                                    |
+
