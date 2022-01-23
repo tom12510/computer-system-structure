@@ -1,4 +1,4 @@
-##Zookeeper
+## Zookeeper
 
 - Zookeeper 概述
 
@@ -68,6 +68,49 @@
 > 2. 修改zoo.cfg文件 server.${myid} = ip:port:port  ip为其他ZK节点IP，第一个 port 为ZK客户端端口，第二个port端口为ZK选举leader节点
 > 3. 启动各个节点ZK   ./zkServer start
 > 4. 验证集群是否成功  ./zkCli.sh -server ip:port  执行命令ZNode
+
+- Zookeeper 客户端
+
+> ~~~Shell
+> # 连接ZK
+> bin/zkCli.sh -server 127.0.0.1:2181
+> 
+> ZooKeeper -server host:port cmd args
+> addauth scheme auth
+> close
+> config [-c] [-w] [-s]
+> connect host:port
+> create [-s] [-e] [-c] [-t ttl] path [data] [acl]
+> delete [-v version] path
+> deleteall path
+> delquota [-n|-b] path
+> get [-s] [-w] path
+> getAcl [-s] path
+> getAllChildrenNumber path
+> getEphemerals path
+> history
+> listquota path
+> ls [-s] [-w] [-R] path
+> ls2 path [watch]
+> printwatches on|off
+> quit
+> reconfig [-s] [-v version] [[-file path] | [-members serverID=host:port1:port2;port3[,...]*]] | [-add serverId=host:port1:port2;port3[,...]]* [-remove serverId[,...]*]
+> redo cmdno
+> removewatches path [-c|-d|-a] [-l]
+> rmr path
+> set [-s] [-v version] path data
+> setAcl [-s] [-v version] [-R] path acl
+> setquota -n|-b val path
+> stat [-w] path
+> sync path
+> 
+> ~~~
+
+- ZK API 文档
+
+> https://zookeeper.apache.org/doc/current/apidocs/zookeeper-server/index.html
+
+
 
 
 
