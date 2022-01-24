@@ -9,4 +9,5 @@
 - MYSQL
 - Oracle
 - Linux与Shell
+- Zookeeper
 
