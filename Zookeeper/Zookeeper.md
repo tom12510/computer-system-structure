@@ -130,8 +130,14 @@
 
   #### **ZK开源框架(Curator)**
 
+  > <img src="image-20220124180641598.png" alt="image-20220124180641598" style="zoom:50%;" /> 
+  >
+  >  <img src="image-20220124180750322.png" alt="image-20220124180750322" style="zoom:50%;" /> 
+  >
+  > 官方API https://curator.apache.org/getting-started.html 
+  >
   > 
-
+  
   
 
 
