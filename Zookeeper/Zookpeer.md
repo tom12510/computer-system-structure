@@ -37,6 +37,14 @@
 >   > - 单一系统镜像（zk服务故障转移）
 >   > - 可靠性（应用更新一致）
 >   > - 及时性（保证应用端在一定时间范围内是最先的）
+>
+> - ZK统计结构
+>
+>   > ![image-20220124002404936](image-20220124002404936.png) 
+>   >
+>   > Zxid：事务ID 递增 
+>
+> - ZK会话
 
  - #### **zoo.cfg 文件**
 >1. tickTime：心跳频率（单位毫秒）
@@ -69,7 +77,7 @@
 > 3. 启动各个节点ZK   ./zkServer start
 > 4. 验证集群是否成功  ./zkCli.sh -server ip:port  执行命令ZNode
 
-- Zookeeper 客户端
+- #### Zookeeper 客户端
 
 > ~~~Shell
 > # 连接ZK
@@ -106,9 +114,25 @@
 > 
 > ~~~
 
-- ZK API 文档
+- #### ZK API 文档
 
 > https://zookeeper.apache.org/doc/current/apidocs/zookeeper-server/index.html
+
+- #### ZK WATCH
+
+  > 客户端在znode上设置监视，当znode发生更改时，ZK会向客户端发送通知
+  >
+  > <img src="image-20220124001851977.png" alt="image-20220124001851977" style="zoom:50%;" /> 
+  >
+  > - datawatches 节点数据变化
+  > - childWatches 子节点变化（新增，删除）
+  > - existWatches（监听自身节点）
+
+  #### **ZK开源框架(Curator)**
+
+  > 
+
+  
 
 
 
