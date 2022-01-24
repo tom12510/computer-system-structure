@@ -127,6 +127,8 @@
   > - datawatches 节点数据变化
   > - childWatches 子节点变化（新增，删除）
   > - existWatches（监听自身节点）
+  >
+  > 
 
   #### **ZK开源框架(Curator)**
 
@@ -136,7 +138,45 @@
   >
   > 官方API https://curator.apache.org/getting-started.html 
   >
+  > CuratorFramework 客户端实现方式
+  >
+  > ---
+  >
+  > **ZK节点类型**
+  >
+  > - Persistent 持久化节点
+  > - Persistent_Sequential 持久化顺序节点（记入子节点创建先后顺序，ZK 分布式ID生成器）
+  > - Phemeral 临时节点
+  > - EPhemeral_SEQUENTIAL 临时顺序节点
+  >
+  > ---
+  >
+  > **使用ZK实现SnowFlakeID算法**
+  >
+  > <img src="image-20220124225330120.png" alt="image-20220124225330120" style="zoom:50%;" /> 
+  >
+  >    *工作机器ID占用10bit 可以容纳1024个机器*
+  >
+  >   *序列号 占用12bit 可以累加到4095个*
+  >
+  > 雪花ID算法可以在1毫秒内生成 1024*4096 个ID
+  >
+  > ---
+  >
+  > **ZK服务器端事件监听**
+  >
+  > - 标准观察者模式（Watcher）
+  > - 缓存监听模式（Cache）
+  >
+  > <img src="image-20220124230734936.png" alt="image-20220124230734936" style="zoom:50%;" /> 
+  >
   > 
+  >
+  > 
+  
+  
+  
+  
   
   
 
