@@ -17,6 +17,34 @@
   > - ACL WHOAMI
   > - EXPIRE 设置KEY过期时间
   > - EXPIREAT 设置KEY过期时间为指定时间
+  >
+  > **数据类型操作**
+  >
+  > - String
+  >
+  >   > set key value [EX seconds]
+  >   >
+  >   > Mset key value [key value ,ket value] （覆盖key）
+  >   >
+  >   > Msetnx key vakue  键不存在时添加
+  >   >
+  >   > get key
+  >   >
+  >   > mget key [key...]
+  >   >
+  >   > strlen key
+  >   >
+  >   > incr key 
+  >   >
+  >   > decr key
+  >
+  > - List
+  >
+  >   > rpush key value[value...]
+  >   >
+  >   > lpush key value [value...]
+  >   >
+  >   > Lpop key
 
 - #### **RedisServer**
 
