@@ -56,11 +56,19 @@
   >  public Object getBean(String name){
   >    return doGetBean(name,null,null,false);
   >  }
-  >  // doGetBean 加载方法
+  >  // doGetBean 加载方法 
   >  protected <T> T doGetBean(String name, @Nullable Class<T> requiredType, @Nullable Object[] args, boolean typeCheckOnly) throws BeansException {
+  >           // 转换对应的beanName
   >          String beanName = this.transformedBeanName(name);
   >          Object sharedInstance = this.getSingleton(beanName);
   >          Object beanInstance;
+  >         /**
+  >           * 检查缓存或者工厂中是否有对应实例
+  >           * 检查创建单例bean中是否存在依赖注入情况（避免循环依赖）
+  >           * 存在缓存直接使用缓存中bean对象
+  >           */
+  >    
+  >         // 尝试从缓存或者singletonFactories中获取Bean
   >          if (sharedInstance != null && args == null) {
   >              if (this.logger.isTraceEnabled()) {
   >                  if (this.isSingletonCurrentlyInCreation(beanName)) {
@@ -69,15 +77,18 @@
   >                      this.logger.trace("Returning cached instance of singleton bean '" + beanName + "'");
   >                  }
   >              }
-  >  
+  >           // 返回bean的实例
   >              beanInstance = this.getObjectForBeanInstance(sharedInstance, name, beanName, (RootBeanDefinition)null);
   >          } else {
+  >            // 只有单例中尝试解决循环依赖，原型模式下，如果存在A中有B的元素并且
+  >            // B中有A的属性，创建时候就会先创建依赖B在返回创建当前A，当创建B时由于B
+  >            // 已经存在，造成循环依赖
   >              if (this.isPrototypeCurrentlyInCreation(beanName)) {
   >                  throw new BeanCurrentlyInCreationException(beanName);
   >              }
-  >  
   >              BeanFactory parentBeanFactory = this.getParentBeanFactory();
-  >              if (parentBeanFactory != null && !this.containsBeanDefinition(beanName)) {
+  >            // 从beanDefinitMap中不存在beanName 则尝试从parentBeanFacort检测
+  >            if (parentBeanFactory != null && !this.containsBeanDefinition(beanName)) {
   >                  String nameToLookup = this.originalBeanName(name);
   >                  if (parentBeanFactory instanceof AbstractBeanFactory) {
   >                      return ((AbstractBeanFactory)parentBeanFactory).doGetBean(nameToLookup, requiredType, args, typeCheckOnly);
