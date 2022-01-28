@@ -1,4 +1,4 @@
-SpringBoot
+## SpringBoot
 
 - #### **Springboot 优点**
 
@@ -64,17 +64,22 @@ SpringBoot
   >   >     Class<?>[] exclude() default {};
   >   >     String[] excludeName() default {};
   >   > }
-  >   > 
+  >   > // AutoConfigurationPackage 使用SpringBoot自动配置，用来将主配置类所在包及其子包中的类加载到Spring容器
   >   > @Import({Registrar.class})
   >   > public @interface AutoConfigurationPackage {
   >   >     String[] basePackages() default {};
   >   >     Class<?>[] basePackageClasses() default {};
   >   > }
   >   > 
-  >   > 
+  >   > //加载第三方依赖
+  >   > public class AutoConfigurationImportSelector {
+  >   >   
+  >   > }
   >   > ~~~
   >   >
-  >   > 
+  >   > <img src="image-20220128152626452.png" alt="image-20220128152626452" style="zoom:50%;" /> 
+  >   >
+  >   > spring.factories 第三方配置类
   >
   > - **@ComponentScan 自动扫描组件**
   >
