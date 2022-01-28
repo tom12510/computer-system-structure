@@ -16,9 +16,13 @@
 
 #### [redisson](https://redisson.org/)
 
-> *基于Netty框架的事件驱动的通信层，其方法调用是异步的。Redisson的API是线程安全的，所以可以操作单个Redisson连接来完成各种操作*,实现了分布式和可扩展的Java数据结构。
+> *基于Netty框架的事件驱动的通信层，其方法调用是异步的。Redisson的API是线程安全的，所以可以操作单个Redisson连接来完成各种操作,实现了分布式和可扩展的Java数据结构*。
+>
+> https://www.cnblogs.com/kiko2014551511/p/11527108.html
 
 #### [lettuce](https://github.com/redisson/redisson)
 
 > *基于Netty框架的事件驱动的通信层，其方法调用是异步的。Lettuce的API是线程安全的，所以可以操作单个Lettuce连接来完成各种操作*
+
+
 
