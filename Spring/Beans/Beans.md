@@ -422,17 +422,23 @@
   >   - isSingletonCurrentlyInCreation(beanName) ：当前bean是否在创建中
   >
   > - 属性填充（**populateBean**）
-  >
   >   - autowireByName
   >   - autowireByType
-  >
   > - 循环依赖检查（Spring不能处理的循环依赖）
-  >
   > - 注册DisposableBean（注册销毁）
-  >
   > - 完成创建并返回
   >
-  >   
+  >  
   >
-  >   
+  > **激活Aware方法**
+  >
+  >  *Aware接口的bean在被初始化后，可以获取一些相对应的资源，提供给ApplicationContextAware使用* 
+  >
+  >  
+  >
+  > BeanPostProcessor实现相应的接口并注册，可以在特定时间回调自定义实现（业务扩展）
+  >
+  > 
+  >
+  > 
 
