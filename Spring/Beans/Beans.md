@@ -58,7 +58,7 @@
   > }
   > // doGetBean 加载方法 
   > protected <T> T doGetBean(String name, @Nullable Class<T> requiredType, @Nullable Object[] args, boolean typeCheckOnly) throws BeansException {
-  >  // 转换对应的beanName
+  > // 转换对应的beanName
   > String beanName = this.transformedBeanName(name);
   > Object sharedInstance = this.getSingleton(beanName);
   > Object beanInstance;
@@ -213,12 +213,18 @@
   > 3. 对Bean实例化
   > 4. 在单例情况下，使用setter方法造成的循环依赖，才能被检查到
   > 5. parentBeranFactory 无缓存的的话，从父类工厂加载
+  > 6. 针对不同的scope进行bean创建
+  > 7. 类型转换
   >
   > <img src="image-20220128225932545.png" alt="image-20220128225932545" style="zoom:50%;" />  
   >
   > ---
   >
   > **FactoryBean**
+  >
+  > 通过反射机制对bean的class属性指定实现类来实例化bean
+  >
+  > ![image-20220205220108471](image-20220205220108471.png) 
   >
   > 
   >
