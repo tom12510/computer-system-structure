@@ -1,4 +1,4 @@
-## AOP面向对象编程
+·## AOP面向对象编程
 
 AOP（Aspect Orient Programming)，保证开发者不修改源代码情况下，为系统业务组件中增强功能。
 
@@ -24,6 +24,6 @@ AOP（Aspect Orient Programming)，保证开发者不修改源代码情况下，
 
 #### **Spring AOP代理**
 
-> - 动态AOP自定义标签
+> - **创建AOP代理**
 >
->   > 
+>   > AnnotationAwareAspectJAutoProxyCreator
