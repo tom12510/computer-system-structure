@@ -5,10 +5,8 @@
 - 设计模式
 - 操作系统
 - Redis
-- Spring源码
 - MYSQL
 - Oracle
 - Linux与Shell
-- Zookeeper
 
 
