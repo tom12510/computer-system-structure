@@ -122,7 +122,9 @@ $$
   |     $\lnot$      |     \lnot      |
   | $\mathscr{P}(X)$ | \mathscr{P}(X) |
   |   $\emptyset$    |   \emptyset    |
-  |  $\overline{A}$  | $\overline{A}  |
+  |  $\overline{A}$  |  \overline{A}  |
+  |  $\sqrt[2]{5}$   |  \sqrt[2]{5}   |
+  |    $\vec{a}$     |    \vec{a}     |
   
   
 
