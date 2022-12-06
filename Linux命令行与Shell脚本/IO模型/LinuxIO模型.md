@@ -152,7 +152,7 @@
 >   > | +d <目录>   | 列出目录下被打开的文件                                       |
 >   > | +D <目录>   | 递归列出目录下被打开的文件                                   |
 >   > | -n <目录>   | 列出使用NFS的文件                                            |
->   > | -i <条件>   | 列出符合条件的进程(port，TCP，@host)<br /> lsof -i [46] [protocol] [@hostname] [hostaddr] [:service \| prot]<br /> 46 :使用IPv4 或IPv6<br /> protocol：TCP 或 UDP<br /> hostname：连接其他主机地址<br /> hostaddr：ipv4连接位置 |
+>   > | -i <条件>   | 列出符合条件的进程(port，TCP，@host)<br /> lsof -i [46] [protocol] [@hostname \| hostaddr] [:service \| prot]<br /> 46 :使用IPv4 或IPv6<br /> protocol：TCP 或 UDP<br /> hostname：连接其他主机地址<br /> hostaddr：ipv4连接位置 |
 >   > | -u          | 列出UID号进程详情(用户标识码，启动进程的用户)                |
 >   >
 >   > **输出参数**
@@ -172,9 +172,17 @@
 >   > 1. lsof -u mysql | grep deleted  ：查找mysql 用户打开并删除的文件
 >   > 2. lsof -i
 >
-> - ip
+> - #### ip（显示或操作linux主机的路由，设备，策略路由和隧道）
 >
-> - iptraf
+>   > Ip [options] object{ command | help}
+>   >
+>   > options：
+>   >
+>   > object：link，address，addrlabel，route，rule，neigh，ntable，tunnel，tuntap，maddress，mroute，mrule，monitor，xfrm，netns，I2tp，tcp_metrics，token
+>   >
+>   > 
+>
+> -  iptraf
 >
 > - netstat
 >
@@ -184,4 +192,4 @@
 >
 > - iftop
 >
-> 
+
