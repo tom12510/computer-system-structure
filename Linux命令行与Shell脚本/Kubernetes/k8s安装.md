@@ -2,32 +2,52 @@
 
 > **K8s安装包**
 >
-> ![image-20230618151132098](img\image-20230618151132098.png) 
+>  ![image-20230620171907421](img\image-20230620171907421.png) 
 >
-> **K8s PKI证书** ：用于集群节点之间安全通信
+> 1. 服务器环境配置
 >
-> - 默认存放在 `/etc/kubernetes/pki`目录中，或使用 --cert-dir参数指定目录，用于账户认证证书存放在 `/etc/kubernetes` 中
+>    ~~~shell
+>    # 设置主机名称（临时配置）
+>    vim /etc/hostname  && hostnamectl set-hostname k8s1
+>    
+>    # 配置DNS解析 并同步到其他节点
+>    cat >> /etc/hosts  << 'EOF'
+>     192.168.31.100 k8s1
+>     192.168.31.101 k8s2
+>     192.168.31.102 k8s3
+>     192.168.31.103 k8s4
+>     192.168.31.104 k8s5
+>    EOF
+>    
+>    #所有节点修改yum镜像
+>    curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+>    sed -i -e '/mirrors.cloud.aliyuncs.com/d' -e '/mirrors.aliyuncs.com/d' /etc/yum.repos.d/CentOS-Base.repo
+>    curl -o /etc/yum.repos.d/docker-ce.repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+>    
+>    #安装常用软件
+>    yum -y install bind-utils expect rsync wget jq psmisc vim net-tools telnet yum-utils device-mapper-persistent-data lvm2 git ntpdate
+>    
+>    #免密登陆
+>    ssh-keygen -t rsa 
+>    ssh-copy-id -i /root/.ssh/id_rsa.pub  <remote-ip>
+>    
+>    # 使用阿里云同步时间
+>    ntpdate ntp.aliyun.com
+>    ~~~
 >
-> - 组件证书包含
+> 2. 服务器应用配置
 >
->   ```shell
->    # Kubernetes 通用 CA
->   /etc/kubernetes/pki/ca.crt
->   /etc/kubernetes/pki/ca.key
->   # 与 etcd 相关的所有功能
->   /etc/kubernetes/pki/etcd/ca.crt
->   /etc/kubernetes/pki/etcd/ca.key
->   # 用于前端代理
->   /etc/kubernetes/pki/front-proxy-ca.crt
->   /etc/kubernetes/pki/front-proxy-ca.key
->   # 用户证书
->   /etc/kubernetes/sa.key
->   /etc/kubernetes/sa.pub
->   ```
+>    ~~~shell
+>    # 所有节点关闭firewalld，selinux，NetworkManager，swap
+>    systemctl disable --now firewalld 
+>    systemctl disable --now NetworkManager
+>    setenforce 0
+>    sed -i 's#SELINUX=enforcing#SELINUX=disabled#g' /etc/sysconfig/selinux
+>    sed -i 's#SELINUX=enforcing#SELINUX=disabled#g' /etc/selinux/config
+>    swapoff -a && sysctl -w vm.swappiness=0
+>    sed -ri '/^[^#]*swap/s@^@#@' /etc/fstab
+>    
+>    ~~~
 >
-> - 查看证书是否过期   kubeadm certs check-expiration
->
-> - kubeadm组件升级会延长证书时间  kubeadm upgrade apply
->
-> - 手动更新证书  kubeadm certs renew
+>    
 
