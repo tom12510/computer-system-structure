@@ -14,6 +14,8 @@
 
 - Ctrl + Shift + M   编辑公式块
 
+- 空格  \quad   \;
+
 - 非  \lnot
 
 - 分数表达  \frac $\frac{2}{3}$
@@ -29,10 +31,6 @@
 - 累乘 \prod  $\prod_{n=1}^{99}{x_n}$
 
 - 导数 \partial $\frac{\partial ^2 z}{\partial x}|_{x=x_0}$
-
-  
-
-  
 
 - 矩阵与行列式   {matrix}  {vmatrix} {bmatrix} {Bmatrix} {pmatrix}使用&分隔同行元素，\ \换行
   $$
