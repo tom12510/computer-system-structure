@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>数理统计</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { color: #0366d6; text-decoration: none; }
+        code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f6f8fa; padding: 10px; border-radius: 4px; overflow: auto; }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h2>数理统计</h2>
+<p>数理统计是以概率论为基础，研究社会和自然界中大量随机现象数量变化基本规律的一种方法。其主要内容有参数估计、假设检验、相关分析、试验设计、非参数统计、过程统计等。</p>
+<blockquote>
+<p>总体：实验的全部个体集合</p>
+<p>参数空间（<span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>）：随机变量X的概率范围</p>
+<p>样本（n）：总体的任何子集合</p>
+<p>简单随机抽样：随机（个体抽中概率相等），独立性（样本变量相互独立），同分布（总体与样本分布性相同） 
+$$
+总体分布函数与样本分布函数之间关系\F(X_1,X_2,...X_n) = \prod_{i=1}^n F(X_i)
+$$
+<strong>统计量：样本变量X构成的函数集合</strong>（不含任何未知参数）</p>
+<p><img alt="image-20231023203844668" src="assets/image-20231023203844668.png" /> </p>
+<p><strong>常见的统计量</strong></p>
+<ol>
+<li>
+<p>样本均值（数学期望）</p>
+</li>
+<li>
+<p>样本标准差 S，样本方差<span class="arithmatex"><span class="MathJax_Preview">S^2</span><script type="math/tex">S^2</script></span> 
+   $$
+   S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i -\overline{x})^2 = D(\overline{x}) = \frac{D(X)}{n}
+   $$</p>
+</li>
+<li>
+<p>样本k阶原点矩$ A_K=\frac{1}{n}\sum_{i=1}^{n}X_i^k  $</p>
+</li>
+<li>
+<p>样本k阶中心距<span class="arithmatex"><span class="MathJax_Preview">B_k=\frac{1}{n}\sum_{i=1}^{n}(X_i-\overline{X})^K</span><script type="math/tex">B_k=\frac{1}{n}\sum_{i=1}^{n}(X_i-\overline{X})^K</script></span></p>
+</li>
+</ol>
+<p><strong>统计量与抽样分布</strong>：</p>
+<ul>
+<li>样本函数 <span class="arithmatex"><span class="MathJax_Preview">T = T(x_1,x_2,...x_n)</span><script type="math/tex">T = T(x_1,x_2,...x_n)</script></span>中不含有任何未知参数，则<strong>T为统计量，统计量的分布函数为抽样分布</strong></li>
+</ul>
+<p>样本均值与抽样分布</p>
+<ol>
+<li>总体为正态分布<span class="arithmatex"><span class="MathJax_Preview">X-N(u,\sigma^2)</span><script type="math/tex">X-N(u,\sigma^2)</script></span>，其样本均值<span class="arithmatex"><span class="MathJax_Preview">\overline{x}</span><script type="math/tex">\overline{x}</script></span>也为正态分布<span class="arithmatex"><span class="MathJax_Preview">X-N(u,\frac{\sigma^2}{n})</span><script type="math/tex">X-N(u,\frac{\sigma^2}{n})</script></span></li>
+<li>总体分布不明确，当样本容量n较大时，其样本分布接近与正态分布（中心极限定理）</li>
+</ol>
+</blockquote>
+<ul>
+<li>
+<h4><strong>常见的抽样分布函数</strong></h4>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<p>卡方分布：随机变量<span class="arithmatex"><span class="MathJax_Preview">X_1,X_2... X_n</span><script type="math/tex">X_1,X_2... X_n</script></span>相互独立，且满足N(0,1)标准分布，则<span class="arithmatex"><span class="MathJax_Preview">\chi ^2=X_1^2+X_2^2+X_3^2+...+X_n^2</span><script type="math/tex">\chi ^2=X_1^2+X_2^2+X_3^2+...+X_n^2</script></span> 是自由度为n的卡方分布，<strong>EX =n ，DX=2n</strong></p>
+</li>
+<li>
+<p>X，Y相互独立，且为卡方分布，X，Y构成的卡方分布 <span class="arithmatex"><span class="MathJax_Preview">(X+Y)-\chi^2(m+n)</span><script type="math/tex">(X+Y)-\chi^2(m+n)</script></span></p>
+</li>
+<li>
+<p>上<span class="arithmatex"><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>分位数：随机变量<span class="arithmatex"><span class="MathJax_Preview">\chi_\alpha^2(n)</span><script type="math/tex">\chi_\alpha^2(n)</script></span>右侧的概率为 a
+     $$
+     P{\chi^2 &gt; \chi_\alpha^2(n)} = a  ~~~~~  \ \
+      n:自由度，\alpha: 该点右侧的概率，\chi_\alpha^2(n)：上位a分位数
+     $$</p>
+</li>
+<li>
+<p>t分布：X<code>~</code>N(0,1)，Y<code>~</code><span class="arithmatex"><span class="MathJax_Preview">\chi ^2(n)</span><script type="math/tex">\chi ^2(n)</script></span>，且X，Y独立，则<span class="arithmatex"><span class="MathJax_Preview">\frac{X}{\sqrt{Y /n}} -t(n)</span><script type="math/tex">\frac{X}{\sqrt{Y /n}} -t(n)</script></span></p>
+</li>
+<li>
+<p>t分布关于y轴对称，存在 <span class="arithmatex"><span class="MathJax_Preview">t_{1-a}(n) = - t_a(n)</span><script type="math/tex">t_{1-a}(n) = - t_a(n)</script></span></p>
+</li>
+<li>
+<p>当n&gt;2时，t分布方差为n/(n-2)</p>
+</li>
+<li>
+<p>当n&gt;1时，t分布数学期望为0</p>
+</li>
+<li>
+<p>当t&gt;30时，t分布可以用正态分布近似N(0,1)</p>
+</li>
+<li>
+<p>F分布：<span class="arithmatex"><span class="MathJax_Preview">X_1 -\chi^2(m)</span><script type="math/tex">X_1 -\chi^2(m)</script></span>，<span class="arithmatex"><span class="MathJax_Preview">X_2 - \chi^2(n)</span><script type="math/tex">X_2 - \chi^2(n)</script></span>，且<span class="arithmatex"><span class="MathJax_Preview">X_1与X_2</span><script type="math/tex">X_1与X_2</script></span>相互独立，则存在函数<span class="arithmatex"><span class="MathJax_Preview">F=\frac{X_1 /m}{X_2/n}</span><script type="math/tex">F=\frac{X_1 /m}{X_2/n}</script></span> 为自由度m与n的F分布），记为 F~F(m,n)</p>
+</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">F - F(m,n) ,~~~~~\frac{1}{F} = F(n,m)</span><script type="math/tex">F - F(m,n) ,~~~~~\frac{1}{F} = F(n,m)</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">F_{1-a}(n_1,n_2) = 1 / F_a(n_2,n_1)</span><script type="math/tex">F_{1-a}(n_1,n_2) = 1 / F_a(n_2,n_1)</script></span></li>
+</ul>
+<p><strong>正态总体下的抽样分布</strong></p>
+<ol>
+<li>
+<p>样本均值<span class="arithmatex"><span class="MathJax_Preview">\overline{x}</span><script type="math/tex">\overline{x}</script></span>也为正态分布<span class="arithmatex"><span class="MathJax_Preview">X-N(u,\frac{\sigma^2}{n})</span><script type="math/tex">X-N(u,\frac{\sigma^2}{n})</script></span></p>
+</li>
+<li>
+<p><span class="arithmatex"><span class="MathJax_Preview">\frac{(n-1) S^2}{\sigma^2} =\frac{1}{\sigma^2}\sum_{i=1}^n(x_i-\overline{x})^2 = \chi^2(n-1)</span><script type="math/tex">\frac{(n-1) S^2}{\sigma^2} =\frac{1}{\sigma^2}\sum_{i=1}^n(x_i-\overline{x})^2 = \chi^2(n-1)</script></span></p>
+</li>
+<li>
+<p><span class="arithmatex"><span class="MathJax_Preview">\frac{1}{\sigma^2}\sum_{i=1}^n(x_i-u)^2 - \chi^2(n)</span><script type="math/tex">\frac{1}{\sigma^2}\sum_{i=1}^n(x_i-u)^2 - \chi^2(n)</script></span></p>
+</li>
+<li>
+<p><span class="arithmatex"><span class="MathJax_Preview">\frac{\overline{x} -u}{S} \sqrt{n} - t(n-1)</span><script type="math/tex">\frac{\overline{x} -u}{S} \sqrt{n} - t(n-1)</script></span></p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>
+<h4><strong>参数估计</strong></h4>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<p>点估计</p>
+</li>
+<li>
+<p>区间估计</p>
+</li>
+<li>
+<p><strong>矩估计</strong> (使用样本代替总体)</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>总体的数学期望E(X)等于样本均值<span class="arithmatex"><span class="MathJax_Preview">\overline{X}</span><script type="math/tex">\overline{X}</script></span>     E(X) = <span class="arithmatex"><span class="MathJax_Preview">\overline{X}</span><script type="math/tex">\overline{X}</script></span>  </li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>极大似然估计</strong> （选择概率最大的事件作为总体）</li>
+</ul>
+<blockquote>
+<ol>
+<li>设似然函数 <span class="arithmatex"><span class="MathJax_Preview">L(\theta) = \prod_{i=1}^n f(x_i,\theta) 或表达 \prod_{i=1}^n P_i(\theta)，f(x_i,\theta) 为密度函数</span><script type="math/tex">L(\theta) = \prod_{i=1}^n f(x_i,\theta) 或表达 \prod_{i=1}^n P_i(\theta)，f(x_i,\theta) 为密度函数</script></span></li>
+<li>连边求对数  <span class="arithmatex"><span class="MathJax_Preview">ln ~L = \sum_{i=1}^n ~ln f(x_i,\theta)</span><script type="math/tex">ln ~L = \sum_{i=1}^n ~ln f(x_i,\theta)</script></span></li>
+<li>两边求导令结果为0，在求出参数与均值关系 </li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>点估计评价标准</strong>（距法估计和极大似然估计）</li>
+</ul>
+<blockquote>
+<p>无偏估计：系数之和为1，为无偏估计</p>
+<p>有效性：系数方差最小（系数相同方差最小）</p>
+<p>置信区间（类似于标准差）： a：显著性水平，1-a：置信度</p>
+<blockquote>
+<ol>
+<li>
+<p><strong>总体标准方差<span class="arithmatex"><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span> 已知</strong>，求置信区间u
+   $$
+   u_ = \frac{\overline{x} - \sigma}{a / \sqrt{n}}，~~~置信区间 [\overline{x}-u_{a/2}\frac{\sigma}{\sqrt{n}}，\overline{x}+u_{a/2}\frac{\sigma}{\sqrt{n}}]
+   $$</p>
+</li>
+<li>
+<p><strong>总体标准方差<span class="arithmatex"><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span> 未知</strong>，s为样本方差, 求u的置信区间，
+   $$
+   置信区间 : [\overline{x} - t_{a/2}(n-1)\frac{s}{\sqrt{n}}，\overline{x} + t_{a/2}(n-1)\frac{s}{\sqrt{n}}]
+   $$</p>
+</li>
+<li>
+<p>求总体方差<span class="arithmatex"><span class="MathJax_Preview">\sigma^2</span><script type="math/tex">\sigma^2</script></span>的置信区间
+   $$
+   置信区间：[\frac{(n-1)s^2}{X^2 u/2(n-1)}，\frac{(n-1)s^2}{X^2 （1-u/2)(n-1)}]
+   $$</p>
+</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>
+<h4><strong>假设估计</strong></h4>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<p>拒绝域：置信区间外的区域</p>
+</li>
+<li>
+<p>两类错误</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>第一类错误：<strong>在原假设成立情况下</strong>，样本落在拒绝域W中，因而原假设被拒绝，犯第一类错误概率为a  （假设总体合格，抽样后存在不合格样本，原假设被拒）</li>
+<li>第二类错误：<strong>在原假设不成立情况下</strong>，样本落在置信区间中，因而原假设被接受，犯第二类错误概率为b（假设总体不合格（否命题），抽样后存在合格样本，原假设接受）
+</li>
+</ol>
+</blockquote>
+</blockquote>
+</body>
+</html>

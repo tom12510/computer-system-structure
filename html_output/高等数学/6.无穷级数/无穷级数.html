@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>无穷级数</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { color: #0366d6; text-decoration: none; }
+        code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f6f8fa; padding: 10px; border-radius: 4px; overflow: auto; }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h2>无穷级数</h2>
+<ul>
+<li>
+<h4>数项级数</h4>
+</li>
+</ul>
+<blockquote>
+<p><strong>常数项级数（所有数项之和）</strong>：<span class="arithmatex"><span class="MathJax_Preview">\sum_{i=1}^\infty u_n = u_1+u_2+...+u_n</span><script type="math/tex">\sum_{i=1}^\infty u_n = u_1+u_2+...+u_n</script></span> </p>
+<p><strong>前n项之和</strong>：<span class="arithmatex"><span class="MathJax_Preview">S_n=  u_1+u_2+...+u_n = \sum _{k=1}^{n}u_n</span><script type="math/tex">S_n=  u_1+u_2+...+u_n = \sum _{k=1}^{n}u_n</script></span>  </p>
+<p>级数收敛：$\lim_{n \to \infty}S_n = s \; $ (s为常数)</p>
+<p><strong>常数项性质</strong></p>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">\sum_{n=1}^{\infty}u_n收敛于s ~~~~ 且 \sum_{n=1}^{\infty}ku_n收敛于ks，k不等于0</span><script type="math/tex">\sum_{n=1}^{\infty}u_n收敛于s ~~~~ 且 \sum_{n=1}^{\infty}ku_n收敛于ks，k不等于0</script></span></li>
+<li>级数加上或减少<strong>有限项</strong>，其敛散性不变（<strong>收敛的和会变</strong>）</li>
+<li>两个收敛级数相加减的到的级数也是收敛。<strong>相加减后收敛的级数，原级数未必收敛</strong>。级数收敛，任意加括号得到的级数也收敛，且和不变（<strong>加括号收敛，原来级数未必收敛，加括后发散，原级数一定是发散的</strong>）</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\sum u_n收敛的必然条件 u_n \to 0 , ~~~~~~u_n \to 0未必收敛</span><script type="math/tex">\sum u_n收敛的必然条件 u_n \to 0 , ~~~~~~u_n \to 0未必收敛</script></span> </li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\sum_{n=1}^{+\infty}|u_n|收敛，则\sum_{n=1}^{+\infty}u_n收敛</span><script type="math/tex">\sum_{n=1}^{+\infty}|u_n|收敛，则\sum_{n=1}^{+\infty}u_n收敛</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\sum_{n=1}^{+\infty}|u_n|发散，\sum_{n=1}^{+\infty}u_n 条件收敛</span><script type="math/tex">\sum_{n=1}^{+\infty}|u_n|发散，\sum_{n=1}^{+\infty}u_n 条件收敛</script></span></li>
+</ul>
+<p><strong>常见数项级数</strong></p>
+<ul>
+<li>
+<p><strong>等比级数 （几何级数）</strong>
+  $$
+  S_n = a + aq +aq^2+aq^3+...+aq^{n-1}~~~ 其中 a\ne 0  \; , n \to \infty  \
+  S_n = \frac{a(1-q^n)}{1-q}  \ \
+  |q|&lt;1 ~~~~~lim_{n \to \infty}S_n = \frac{a}{1-q}
+  \ |q|&gt;= 1 时 发散 \
+  $$</p>
+</li>
+<li>
+<p><strong>调和级数（发散）</strong>
+  $$
+  S_n= 1 + \frac{1}{2} +  \frac{1}{3} + ... + \frac{1}{n} \ 
+  S_{2n} - S_n = \frac{1}{n+1} + \frac{1}{n+2} + ... + \frac{1}{n+n}   发散
+  $$</p>
+</li>
+<li>
+<p><strong>p级数</strong>
+  $$
+  \sum_{n=1}^{\infty} \frac{1}{n^p} =1 +\frac{1}{2^p}+\frac{1}{3^p}+\frac{1}{4^p}+...+\frac{1}{n^p}   ~~~~~~~~~~p&gt;0
+  \ 当 p&gt;1时收敛
+  \ 当p\le 1时发散 \</p>
+</li>
+</ul>
+<p>p = 1时，为调和级数 ：1 + \frac{1}{2} +\frac{1}{3}+ .... +\frac{1}{n}
+  $$</p>
+<p><strong>正项级数</strong>  $u_n \geq 0 \; \;\; \;  S_1 \le S_2 \le S_3 \le .... S_n $ </p>
+<ul>
+<li>比较审敛法：<span class="arithmatex"><span class="MathJax_Preview">\sum u_n 与 \sum v_n</span><script type="math/tex">\sum u_n 与 \sum v_n</script></span>是正项级数，且 <span class="arithmatex"><span class="MathJax_Preview">v_n \le u_n \;\;\; 则存在 u_n收敛，其v_n收敛，v_n发散，u_n发散</span><script type="math/tex">v_n \le u_n \;\;\; 则存在 u_n收敛，其v_n收敛，v_n发散，u_n发散</script></span> </li>
+<li>比较审敛法极限：$ \lim_{n \to \infty}\frac{u_n}{v_n} = l \;\;\; (0&lt; l &lt;+\infty) 则\sum v_n 与\sum u_n敛散性相同$  (与调和级数，p级数，等比级数比较)</li>
+<li>比值审敛法：<span class="arithmatex"><span class="MathJax_Preview">lim_{n \to\infty} \frac{u_{n+1}}{u_n} = p ~~~当p&lt;1收敛，p&gt;1 发散，p=1时无法判断</span><script type="math/tex">lim_{n \to\infty} \frac{u_{n+1}}{u_n} = p ~~~当p<1收敛，p>1 发散，p=1时无法判断</script></span> </li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\sum u_n 为正项，当lim_{n \to \infty}\sqrt[n]{u_n}= p~~~ p&lt;1 收敛，p&gt;1 发散</span><script type="math/tex">\sum u_n 为正项，当lim_{n \to \infty}\sqrt[n]{u_n}= p~~~ p<1 收敛，p>1 发散</script></span></li>
+</ul>
+<p><strong>交错级数</strong>： <span class="arithmatex"><span class="MathJax_Preview">\sum_{n=1}^\infty (-1)^{n-1}u_n</span><script type="math/tex">\sum_{n=1}^\infty (-1)^{n-1}u_n</script></span></p>
+<ul>
+<li>莱布尼茨定理，满足一下条件则级数收敛</li>
+<li>存在 <span class="arithmatex"><span class="MathJax_Preview">u_{n+1}\le u_n</span><script type="math/tex">u_{n+1}\le u_n</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">lim_{n\to \infty} u_n</span><script type="math/tex">lim_{n\to \infty} u_n</script></span> =0</li>
+<li><strong>绝对值收敛：</strong></li>
+<li>绝对收敛：绝对值级数收敛，原级数收敛</li>
+<li>条件收敛：绝对值级数发散，原级数收敛</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<h4>幂级数</h4>
+</li>
+</ul>
+<blockquote>
+<p>函数项无穷级数：<span class="arithmatex"><span class="MathJax_Preview">\sum_{i=1}^\infty u_n(x) = u_1(x)+u_2(x)+...+u_n(x)\;</span><script type="math/tex">\sum_{i=1}^\infty u_n(x) = u_1(x)+u_2(x)+...+u_n(x)\;</script></span>   自变量x在区间I上所有函数都存在定义</p>
+<p><strong>幂级数（函数项为幂函数）</strong>：<span class="arithmatex"><span class="MathJax_Preview">\sum_{n=0}^{\infty} a_n(x)^n=a_0+a_1(x)+a_2(x)^2+....+a_n(x)^n</span><script type="math/tex">\sum_{n=0}^{\infty} a_n(x)^n=a_0+a_1(x)+a_2(x)^2+....+a_n(x)^n</script></span>  其中 $a_n $为任意系数</p>
+<ul>
+<li>收敛域：x在区间I上取值范围使级数收敛</li>
+</ul>
+<p><strong>收敛情况与收敛半径</strong></p>
+<ol>
+<li>x = 0 时收敛，R = 0</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">x \in (-\infty,\infty)</span><script type="math/tex">x \in (-\infty,\infty)</script></span> 时收敛  ，R = <span class="arithmatex"><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span></li>
+<li>
+<p>|x| &lt; R 时 绝对收敛（需要单独判断R端点）</p>
+</li>
+<li>
+<p>和函数（收敛）：S(x) = <span class="arithmatex"><span class="MathJax_Preview">u_1(x)+u_2(x)+...+u_n(x)</span><script type="math/tex">u_1(x)+u_2(x)+...+u_n(x)</script></span></p>
+</li>
+</ol>
+<p><strong>收敛半径R求值 （根据系数<span class="arithmatex"><span class="MathJax_Preview">a_n</span><script type="math/tex">a_n</script></span>判断）</strong>
+$$
+lim_{n \to \infty}|\frac{a_{n+1}}{a_n}| = p \
+  R = \begin{cases}
+  \frac{1}{p} ~~~~~~~ p &gt; 0 \
+  +\infty ~~~ p = 0 \
+  0 ~~~~~~~~ p = +\infty
+  \end{cases} \
+$$</p>
+<p><strong>幂级数性质</strong></p>
+<ol>
+<li>
+<p>逐项积分，幂级数积分后收敛半径不变 （通过等比幂级数推导其他和函数）
+   $$
+   \int_0^xs(t)dt = \int_0^x(\sum_{n=0}^{\infty}a_nt^n)dt =\sum_{n=0}^{\infty}\int_0^xa_nt^ndt = \sum_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1}
+   $$</p>
+</li>
+<li>
+<p>逐项求导，幂级数求导后收敛半径不变 （通过等比幂级数推导其他和函数）
+   $$
+   s^{<code>}(x)=(\sum_{n=0}^{\infty}a_nx^n)^{</code>} =\sum_{n=0}^{\infty}(a_nx^n)^`=\sum_{n=0}^{\infty}na_nx^{n-1}
+   $$</p>
+</li>
+</ol>
+<p><strong>等比幂级数</strong>
+$$
+S(x) = 1 + x + x^2 +  x^3 + ...+  x^n \;\;\;  \begin{cases}
+   |x| &lt; 1 时 \;\;\;   收敛域 (-1,1)  \;\;\;   S(x) = \frac{1}{1-x}\ 
+   |x| \ge1 时  \;\;\; 发散
+ \end{cases} \ 
+$$</p>
+<p><strong>幂级函数展开式</strong>
+$$
+f(x)=a_0+a_1(x-x_0)+a_2(x-x_0)^2+...+a_n(x-x_0)^n = \sum_{n=0}^{\infty}a_n(x-x_0)^n \ \
+逐项求导  \;\; f^{`}(x) = a_1 + 2a_2(x-x_0) + 3a_3(x-x_0)^2 +...+ na_{n-1}(x-x_0)^{n-1} \
+\;\;\;\;\;\;\;f^{``}(x) =  2a_2 + (2 \times 3) a_3(x-x_0)+(4\times 3)a_4(x-x_0)^2 +.., \\
+当 x = x_0时 \;\;  a_n = \frac{f^{n}(x_0)}{n!} 为x_0上的泰勒系数 \;\;\; \
+当 x = 0 时 \;\;  a_n = \frac{f^{n}(0)}{n!} 为x_0上的麦克劳林系数
+$$</p>
+<p><strong>常用函数幂级展开式</strong>
+$$
+x \in (1,1) \;\;\;\;\;\ S(x) = \frac{1}{1-x} = a_0+a_1x+a_2x^2+...+a_n(x)^n = \sum_{n=0}^{\infty}a_n(x)^n \
+x \in (-\infty,\infty )  \;\;\;\;\;\ S(x) = e^x = 1 + x + \frac{x^2}{2!} +  \frac{x^3}{3!}  + ... + \frac{n^2}{n!} = \sum_{n=0}^{\infty}   \frac{n^2}{n!} \
+ x \in (-\infty,\infty )  \;\;\;\;\;\ S(x) = sinx =\sum_{n=0}^\infty(-1)^n\frac{x^{2n+1}}{2n+1!}= x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+.... \</p>
+<p>x \in (-\infty,\infty )  \;\;\;\;\;\ S(x)= cosx = \sum_{n=0}^\infty(-1)^n\frac{x^{2n}}{2n!}= x-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+.... \</p>
+<p>x \in (1,1]  \;\;\;\;\;\  S(x)=\frac{1}{1-x} = 1+x+x^2+x^3+...+x^n \ </p>
+<p>x \in (1,1)  \;\;\;\;\;\  S(x)=\frac{1}{1+x} = 1-x+x^2-x^3+...+(-1)^nx^n 
+  \
+ x \in (1,1]  \;\;\;\;\;\ S(x)=x-\frac{x^2}{2}+\frac{x^3}{3}+\frac{(-1)^{n-1}x^n}{n}+.... \</p>
+<p>x \in (1,1)  \;\;\;\;\;\  S(x)=\frac{1}{1+x^2}=1-x^2+x^4-x^6+(-1)^nx^{2n}
+$$
+</p>
+</blockquote>
+<ul>
+<li>
+<h4>傅里叶级数</h4>
+</li>
+</ul>
+<blockquote>
+<p>设 f(x) 是已2π为周期的函数，存在公式
+$$
+n =(0,1,2,...,n) \;\;\;\;\;\; a_n = \frac{1}{\pi} \int_{-π}^{\pi} f(x) cosnxdx  \
+ n =(1,2,...,n) \;\;\;\;\;\; b_n = \frac{1}{\pi} \int_{-π}^{\pi} f(x) sinnxdx  \ \
+  S(x) = \frac{a_0}{2} + \sum_{n =1}^{\infty}(a_ncosnx + b_nsinnx)
+$$</p>
+</blockquote>
+</body>
+</html>

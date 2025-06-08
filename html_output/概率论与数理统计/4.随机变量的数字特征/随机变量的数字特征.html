@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>随机变量的数字特征</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { color: #0366d6; text-decoration: none; }
+        code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f6f8fa; padding: 10px; border-radius: 4px; overflow: auto; }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h2>随机变量的数字特征</h2>
+<ul>
+<li>
+<h4><strong>数学期望</strong>（均值）</h4>
+</li>
+</ul>
+<blockquote>
+<p>离散型随机变量的期望 （随机变量与其概率之和）
+$$
+EX = \sum_{k=1}^{\infty}x_kP_k ~~~~~~~~~~~ 若\sum_{k=1}^{\infty}x_kP_k绝对收敛
+\ 数学期望不一定都存在
+$$
+<strong>连续型随机变量期望</strong>
+$$
+EX = \int_{-\infty}^{+\infty} xf(x)dx   ~~~绝对收敛
+$$
+随机变量函数数学期望
+$$
+EX = \sum g(x_i) P_i
+$$</p>
+<hr />
+<p><strong>数学期望性质</strong>(便于计算数学期望)</p>
+<ol>
+<li>EC =C  （常数期望）</li>
+<li>E(X+C) = EX +C</li>
+<li>E(cX) = c(EX)，E(kX+b) = kEX+b</li>
+<li>E(X<span class="arithmatex"><span class="MathJax_Preview">\pm</span><script type="math/tex">\pm</script></span>Y) = E(X) <span class="arithmatex"><span class="MathJax_Preview">\pm</span><script type="math/tex">\pm</script></span> E(Y)</li>
+<li><strong>当X，Y随机变量相互独立时</strong>，E(XY) = E(X) <span class="arithmatex"><span class="MathJax_Preview">\cdot</span><script type="math/tex">\cdot</script></span> E(Y)</li>
+</ol>
+</blockquote>
+<ul>
+<li>
+<h4><strong>方差</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p>与数学期望偏离程度
+$$
+DX = E(X - EX)^2  = EX^2 - (EX)^2 ~~~~~~ 标准差  \sqrt{DX}
+$$
+离散型：<span class="arithmatex"><span class="MathJax_Preview">DX=\sum_{k}(x_k-EX)^2P_k</span><script type="math/tex">DX=\sum_{k}(x_k-EX)^2P_k</script></span></p>
+<p>连续型：
+$$
+DX=\int_{-\infty}^{+\infty}(x-EX)^2f(x)dx \
+$$
+<strong>方差性质</strong></p>
+<ul>
+<li>
+<p>DC=0  </p>
+</li>
+<li>
+<p>D(X+C) =DX</p>
+</li>
+<li>
+<p>D(CX) =<span class="arithmatex"><span class="MathJax_Preview">C^2DX</span><script type="math/tex">C^2DX</script></span>， D(kX+b) =<span class="arithmatex"><span class="MathJax_Preview">k^2Dx</span><script type="math/tex">k^2Dx</script></span></p>
+</li>
+<li>
+<p>D(X<span class="arithmatex"><span class="MathJax_Preview">\pm</span><script type="math/tex">\pm</script></span>Y) =$ DX + DY \pm 2Cov(X,Y)$  当X，Y相互独立时 2Cov(X，Y)  = 0 </p>
+</li>
+<li>
+<p>X，Y独立，D(X<span class="arithmatex"><span class="MathJax_Preview">\pm</span><script type="math/tex">\pm</script></span>Y) = DX+DY   </p>
+</li>
+</ul>
+<p><strong>常见随机变量方差</strong></p>
+<ul>
+<li>
+<p><strong>0-1分布</strong>
+  $$
+  P(X=k) =p^k(1-p)^{1-k} \
+  D(X) = p-p^2
+  $$</p>
+</li>
+<li>
+<p><strong>二项分布</strong>   X~B(n,p)
+  $$
+  P(X=k)=C_n^kp^k(1-p)^{n-k} \
+  E(X) = np\
+  D(x)=np(1-p)=npq \ 
+  $$
+  <strong>二项分布转正态分布：</strong> X~N(np，npq) </p>
+</li>
+</ul>
+<p><strong>二项分布转泊松分布：</strong> X~P(np) </p>
+<ul>
+<li>
+<p><strong>泊松分布</strong>  X~P(<span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>)
+  $$
+  P(X=k)=\frac{\lambda ^k}{k!}e^{-\lambda} \
+  E(X) = \lambda \
+  D(X) = \lambda
+  $$
+  <strong>泊松分布转正态分布：X~N(<span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>，<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{k}</span><script type="math/tex">\frac{1}{k}</script></span>)</strong></p>
+</li>
+<li>
+<p><strong>均匀分布</strong> X~U(a,b)
+  $$
+  f(x) = \begin{cases} 
+  \frac{1}{b-a}  ~~~~ a\le x \le b\
+  0  ~~~~ 其他
+  \end{cases} \
+  F(x)=  \begin{cases} 
+  0  ~~~~~ x &lt; a \
+  \frac{x-a}{b-a} ~~~~~ a\le x &lt; b \ 
+  1  ~~~~~ b\le x
+  \end{cases}  \
+  E(X)= \frac{a+b}{2} \
+  D(X)=\frac{(b-a)^2}{12}
+  $$</p>
+</li>
+<li>
+<p><strong>指数分布</strong>  X~E(<span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>)
+  $$
+  f(x) = \begin{cases} 
+  \lambda e^{-\lambda x} ~~~~  x &gt;0\
+  0  ~~~~ 其他
+  \end{cases} \
+   F(x)=  \begin{cases} 
+  1-e^{-\lambda x} ~~~~  x &gt;0\
+  0  ~~~~ 其他
+  \end{cases} \
+  E(X)=\frac{1}{\lambda} \
+  D(X)=\frac{1}{\lambda ^2}
+  $$</p>
+</li>
+<li>
+<p><strong>正态分布</strong> X~N(u,<span class="arithmatex"><span class="MathJax_Preview">\sigma ^2</span><script type="math/tex">\sigma ^2</script></span>)
+  $$
+  标准正态分布(u=0,\sigma=1) \
+  F_0(-x) = 1-F_0(x)\
+  F(x)=F_0(\frac{x-u}{\sigma}) \
+  E(X)=u \
+  D(X)= \sigma ^2
+  $$
+  正态分布的样本满足正态分布   <span class="arithmatex"><span class="MathJax_Preview">\overline{x}</span><script type="math/tex">\overline{x}</script></span>~ <span class="arithmatex"><span class="MathJax_Preview">N(u,\frac{\sigma ^2}{n})</span><script type="math/tex">N(u,\frac{\sigma ^2}{n})</script></span> n为样本数</p>
+</li>
+<li>
+<p><strong>二维正态分布</strong>  (X,Y) ~N(<span class="arithmatex"><span class="MathJax_Preview">u_1,u_2,\sigma_1^2,\sigma_2^2,p</span><script type="math/tex">u_1,u_2,\sigma_1^2,\sigma_2^2,p</script></span>)
+  $$
+  (X,Y)-N(u_1,u_2,\sigma_1^2,\sigma_2^2,p)
+  \ p 表示X，Y 相关系数
+  $$</p>
+</li>
+</ul>
+</blockquote>
+<h4><strong>协方差与相关系数</strong></h4>
+<blockquote>
+<p><strong>协方差</strong>：(描述变量X与变量Y之间的数字特性)
+$$
+Cov(X,Y) =E[(X-EX)(Y-EY)] = E(XY)-EX\cdot EY \ \ 协方差与方差关系：D(X\pm Y) = DX+DY \pm 2Cov(X,Y)
+$$
+<strong>协方差性质：</strong></p>
+<ul>
+<li>Cov(X,X) = D(X)</li>
+<li>Cov(X,C) =0</li>
+<li>Cov(X,Y) = Cov(Y,X)</li>
+<li>Cov(aX,bY) = abCov(X,Y)</li>
+<li>当X，Y独立时，Cov(X,Y) =0，当Cov(X,Y)=0时，不能证X，Y是否独立</li>
+</ul>
+<p><strong>相关系数：</strong>
+$$
+\rho_{XY} = \frac{Cov(X,Y)}{\sqrt{DX}\sqrt{DY}} = \frac{E(XY)-EXEY}{\sqrt{DX}\sqrt{DY}} \
+|\rho| \le 1
+相关系数是两个随机变量间线性关系强弱的度量
+$$
+<strong>相关系数性质：</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex"><span class="MathJax_Preview">COV(X,Y)=0 或 p_{XY} = 0时，X与Y不相关，不能证X，Y独立</span><script type="math/tex">COV(X,Y)=0 或 p_{XY} = 0时，X与Y不相关，不能证X，Y独立</script></span></p>
+</li>
+<li>
+<p><span class="arithmatex"><span class="MathJax_Preview">若(X,Y)服从正态分布，X与Y相互独立的充要条件是~~ p_{XY}=0</span><script type="math/tex">若(X,Y)服从正态分布，X与Y相互独立的充要条件是~~ p_{XY}=0</script></span></p>
+</li>
+</ul>
+</blockquote>
+<h4><strong>中心矩与原点矩</strong></h4>
+<blockquote>
+<p><span class="arithmatex"><span class="MathJax_Preview">EX^k</span><script type="math/tex">EX^k</script></span> ：k阶原点距，EX：一阶原点距</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">E(X-EX)^k</span><script type="math/tex">E(X-EX)^k</script></span>：k阶中心距，一阶中心距：0，DX：为二阶中心距</p>
+</blockquote>
+</body>
+</html>

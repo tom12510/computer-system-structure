@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>多维随机变量及其概率分布</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { color: #0366d6; text-decoration: none; }
+        code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f6f8fa; padding: 10px; border-radius: 4px; overflow: auto; }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h2>多维随机变量及其概率分布</h2>
+<ul>
+<li>
+<h4><strong>二维随机变量</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p>假设E是随机试验，<span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span>是样本空间，X，Y是定义在<span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span>的随机变量</p>
+<p><strong>分布函数：</strong>
+$$
+F(x,y) = P{X\le x,Y\le y}  关于X，Y联合分布函数
+$$
+分布函数性质：</p>
+<ol>
+<li><span class="arithmatex"><span class="MathJax_Preview">0\le F(x,y) \le 1</span><script type="math/tex">0\le F(x,y) \le 1</script></span></li>
+<li>F(x,y) 当y不变  <span class="arithmatex"><span class="MathJax_Preview">x_1\le x_2</span><script type="math/tex">x_1\le x_2</script></span>时 <span class="arithmatex"><span class="MathJax_Preview">F(x_1,y)\le F(x_2,y)</span><script type="math/tex">F(x_1,y)\le F(x_2,y)</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">F(-\infty,y)=0,F(x,-\infty)=0,F(-\infty,-\infty)=0，F(+\infty,+\infty)=1</span><script type="math/tex">F(-\infty,y)=0,F(x,-\infty)=0,F(-\infty,-\infty)=0，F(+\infty,+\infty)=1</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">P\{x_1&lt;X\le x_2，y_1&lt;Y\le y_2\} =F(x_2,y_2)-F(x_2,y_1)-F(x_1,y_2)+F(x_1,y_1) \ge 0</span><script type="math/tex">P\{x_1<X\le x_2，y_1<Y\le y_2\} =F(x_2,y_2)-F(x_2,y_1)-F(x_1,y_2)+F(x_1,y_1) \ge 0</script></span></li>
+</ol>
+<hr />
+<p><strong>二维离散型的联合分布及边缘分布</strong></p>
+<table>
+<thead>
+<tr>
+<th>X\Y</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{1}{2}</span><script type="math/tex">\frac{1}{2}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{1}{8}</span><script type="math/tex">\frac{1}{8}</script></span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{1}{8}</span><script type="math/tex">\frac{1}{8}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{1}{8}</span><script type="math/tex">\frac{1}{8}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{1}{8}</span><script type="math/tex">\frac{1}{8}</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>关于X、Y的边缘分布：横纵求和</p>
+<hr />
+<p><strong>二维连续分布函数与密度函数关系</strong>
+$$
+f(s,t)为联合密度函数 \ \F(x,y) =P{X\le x，Y\le y} = \int_{-\infty}^x \int_{-\infty}^yf(s,t)dsdt
+$$</p>
+<ul>
+<li>
+<p>二维边缘分布函数
+  $$
+  变量X取定点x，变量Y取任意值，得到对X的边缘分布函数 F_X(x) \ \
+  F_X(x) = P{X \le x } = F(x,+\infty) = P{X\le x , Y \le +\infty }  ~~F_X(x)：X的边缘 分布函数 \ \
+  F_Y(y) = P{Y \le y } = F(+\infty,y) = P{X\le \infty  , Y \le  y }  ~~F_X(x)：X的边缘
+   \
+  $$</p>
+</li>
+<li>
+<p>二维边缘密度函数与联合密度函数
+  $$
+  f_X(x) = \int_{-\infty}^{+\infty}f(x,t)dt =  \int_{-\infty}^{+\infty}f(x,y)dy \ \
+  f_Y(x) = \int_{-\infty}^{+\infty}f(s,y)dt =  \int_{-\infty}^{+\infty}f(x,y)dx
+  $$</p>
+</li>
+<li>
+<p><strong>二维均匀分布</strong>
+  $$
+  当D是矩形时：f(x,y)=
+    \begin{cases}
+    \frac{1}{(b-a)(d-c)} ~~~ a\le x \le b , c\le y \le d \
+        0  ~~~~~~ 其他
+    \end{cases}
+    \
+  当D是圆形区域时：
+  f(x,y) = \begin{cases} 
+  \frac{1}{\pi R^2} ~~~~ x^2 +y^2\le R^2 \
+  0  ~~~~~~~~~其他
+  \end{cases}
+  $$
+</p>
+</li>
+</ul>
+</blockquote>
+<h4><strong>随机变量的独立性</strong></h4>
+<blockquote>
+<p>判断随机变量的充要独立条件
+$$
+f(x,y) = f_X(x)f_Y(y) \ \
+F(x,y) = F_X(x)F_Y(y)
+$$
+<strong>二维离散型独立性判断</strong></p>
+<table>
+<thead>
+<tr>
+<th>X\Y</th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.2</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.2</td>
+<td>0.4</td>
+</tr>
+</tbody>
+</table>
+<p>其横纵坐标边缘概率之和的乘积等于其坐标上值则独立</p>
+</blockquote>
+<h4><strong>二维连续性随机变量函数分布</strong></h4>
+<blockquote>
+<p>通过密度函数求分布函数（积分)</p>
+</blockquote>
+</body>
+</html>

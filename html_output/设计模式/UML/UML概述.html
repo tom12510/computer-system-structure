@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>UML概述</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { color: #0366d6; text-decoration: none; }
+        code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f6f8fa; padding: 10px; border-radius: 4px; overflow: auto; }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h2>UML</h2>
+<blockquote>
+<p>Unified Modeling Language</p>
+<ul>
+<li>用例图：从用户角度描述系统功能（用户能观察到的系统功能）</li>
+</ul>
+<blockquote>
+<ol>
+<li>参与者（Actor）：人形图案（包含用户角色）</li>
+<li>用例（Use Case）：椭圆标识（说明系统功能）</li>
+<li>关联（Association）：实线+箭头（参与者与用例关联关系）</li>
+<li>包含（Include）：虚线+箭头（用例包含的子模块或功能）</li>
+<li>扩展（Extend）：虚线+箭头（在基础用例上新加的功能）</li>
+<li>泛化（Generalization）：空心+实线（用例下包含多个功能类似的子模块）</li>
+</ol>
+</blockquote>
+<ul>
+<li>类图</li>
+</ul>
+<blockquote>
+<p>has a：包含关系</p>
+<ol>
+<li>
+<p>关联（Association）：对象中含有其他对象属性。实线+箭头</p>
+</li>
+<li>
+<p>聚合（Aggregation）：特殊的关联关系，关联实体之间不在同一生命周期中，可以由方法注入。实线+空菱形</p>
+</li>
+<li>
+<p>组合（Component）：特殊的关联关系，关联实体在同一生命周期中。实线+实心菱形</p>
+</li>
+<li>
+<p>依赖（Dependency）：临时关联（局部变量，入参，出参）。虚线+箭头</p>
+</li>
+</ol>
+<p>is a：类似关系</p>
+<ol>
+<li>泛化（Generaliztion）：继承关系。实线+空三角形</li>
+<li>实现（Realization）：实现关系。虚线+空三角形</li>
+</ol>
+</blockquote>
+<ul>
+<li>
+<p>对象图：表示实例之间某段时间数量（一对多），流通关系</p>
+</li>
+<li>
+<p>状态图：由各种事件而引发状态变动（转移）</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>状态：对象在生命周期中的一种状况，某个特定状态中的对象必然会满足某些条件、执行或等待某些事件</li>
+</ol>
+</blockquote>
+<ul>
+<li>
+<p>活动图</p>
+</li>
+<li>
+<p>时序图</p>
+</li>
+<li>
+<p>协作图</p>
+</li>
+<li>
+<p>构件图</p>
+</li>
+<li>
+<p>部署图</p>
+</li>
+</ul>
+</blockquote>
+</body>
+</html>

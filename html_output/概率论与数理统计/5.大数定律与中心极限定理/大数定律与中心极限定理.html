@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>大数定律与中心极限定理</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { color: #0366d6; text-decoration: none; }
+        code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f6f8fa; padding: 10px; border-radius: 4px; overflow: auto; }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h2><strong>大数定律与中心极限定理</strong></h2>
+<blockquote>
+<p>大量重复试验的平均结果的稳定性</p>
+<ul>
+<li>
+<p>切比雪夫不等式：（期望与方差存在，未知随机变量X的分布情况下，判断事件发生概率值）
+  $$
+  P(|X-EX|\ge \varepsilon) \le \frac{DX}{\varepsilon ^2} ~~~   \ 
+  P(|X-EX| &lt; \varepsilon) \ge 1- \frac{DX}{\varepsilon ^2} \
+  \varepsilon &gt; 0 ~~~~~~~~~ \varepsilon 可取任意大于0值 \
+  $$</p>
+</li>
+<li>
+<p>伯努利大数定律： <br />
+  $$
+  lim_{n \to \infty} {|\frac{n_A}{n}-p| &lt; \varepsilon } = 1 \
+   \varepsilon 可取任意大于0值 ，n为试验次数，p为事件概率
+  $$</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<h4><strong>中心极限定理</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p>现象由大量<strong>相互独立</strong>的因素影响，<strong>大量独立同分布的变量和的极限分布为正态分布</strong>
+$$
+EX_i = u ~~~~~ DX_i=\sigma^2\
+lim_{n\to\infty}F_n(x)=lim_{n \to \infty}P{\frac{\sum_{k=1}^nx_k-nu}{\sqrt{n}\sigma} \le x} = \Phi_0(x)
+$$</p>
+</blockquote>
+</body>
+</html>

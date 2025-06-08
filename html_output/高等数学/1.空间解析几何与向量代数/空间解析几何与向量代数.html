@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>空间解析几何与向量代数</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { color: #0366d6; text-decoration: none; }
+        code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f6f8fa; padding: 10px; border-radius: 4px; overflow: auto; }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h2><strong>空间解析几何与向量代数</strong></h2>
+<ul>
+<li>
+<h4><strong>空间中两点距离公式</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p><span class="arithmatex"><span class="MathJax_Preview">|P_1P_2| = \sqrt{a^2+b^2+c^2} \ \ \ \  P_1\{x_1,y_1,z_1\},P_2\{x_2,y_2,z_2\} \ \ \ a=|x_2-x_1,y_2-y_1,z_z-z_1|</span><script type="math/tex">|P_1P_2| = \sqrt{a^2+b^2+c^2} \ \ \ \  P_1\{x_1,y_1,z_1\},P_2\{x_2,y_2,z_2\} \ \ \ a=|x_2-x_1,y_2-y_1,z_z-z_1|</script></span> </p>
+</blockquote>
+<ul>
+<li>
+<h4><strong>空间上特殊位置</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p><strong>点对称关系（a,b,c)</strong></p>
+<ul>
+<li>关于原点对称 ：(-a,-b,-c)</li>
+<li>关于坐标平面对称（Oxy）：(a,b,-c)</li>
+<li>关于轴(x)对称：(a,-b,-c)</li>
+<li>关于点对称(x,y,z)：（|2x-a|,|2y-b|,|2z-c|)  需要考虑卦限</li>
+</ul>
+<p><strong>特殊向量</strong></p>
+<ul>
+<li>与坐标面平行（Oxy）：<span class="arithmatex"><span class="MathJax_Preview">\vec{a} = \{a,b,0\}</span><script type="math/tex">\vec{a} = \{a,b,0\}</script></span></li>
+<li>与x轴平行 ：<span class="arithmatex"><span class="MathJax_Preview">\vec{a} = \{a,0,0\}</span><script type="math/tex">\vec{a} = \{a,0,0\}</script></span></li>
+<li>与坐标面垂直（Oxy）：<span class="arithmatex"><span class="MathJax_Preview">\vec{a} = \{0,0,c\}</span><script type="math/tex">\vec{a} = \{0,0,c\}</script></span></li>
+<li>与x轴垂直：<span class="arithmatex"><span class="MathJax_Preview">\vec{a} = \{0,b,c\}</span><script type="math/tex">\vec{a} = \{0,b,c\}</script></span>  </li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<h4><strong>向量代数</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p>向量相等：模相同，方向相同</p>
+<p>向量共线：向量的起始点与终止点都在同一条直线上</p>
+<p>向量共面：向量的起始点与终止点都在同一条平面上</p>
+<p>向量平行：向量的方向相同或相反（零向量与任何向量都是共线的，向量共线的充要条件时这两个向量相互平行，<strong>空间中任意两个向量都是共面的</strong>）</p>
+<p><strong>向量平行充要条件：</strong> 设向量<span class="arithmatex"><span class="MathJax_Preview">\vec{a}\neq \vec{0}</span><script type="math/tex">\vec{a}\neq \vec{0}</script></span>则存在<span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>使得 <span class="arithmatex"><span class="MathJax_Preview">\lambda \vec{a} = \vec{b}</span><script type="math/tex">\lambda \vec{a} = \vec{b}</script></span></p>
+<p><strong>向量夹角：</strong> 0&lt;= <span class="arithmatex"><span class="MathJax_Preview">\varphi</span><script type="math/tex">\varphi</script></span> &lt;= <span class="arithmatex"><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>，零向量与任意向量的夹角可取[0,<span class="arithmatex"><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>] 任意值，非零向量的夹角等于<span class="arithmatex"><span class="MathJax_Preview">\frac{\pi}{2}</span><script type="math/tex">\frac{\pi}{2}</script></span> 时，向量垂直</p>
+<p>向量投影：a向量在b上的投影简记为 <span class="arithmatex"><span class="MathJax_Preview">Prj_b \vec{a}</span><script type="math/tex">Prj_b \vec{a}</script></span>​     <span class="arithmatex"><span class="MathJax_Preview">Prj_b \vec{a}</span><script type="math/tex">Prj_b \vec{a}</script></span>​ = <span class="arithmatex"><span class="MathJax_Preview">|\vec{a}|cos \varphi</span><script type="math/tex">|\vec{a}|cos \varphi</script></span>​  <br />
+$$
+同一投影向量可以相加 ~~~ Prj_u(\vec{a}+\vec{b}) = Prj_u\vec{a} + Prj_u\vec{b}
+$$</p>
+<p><strong>向量：</strong> <span class="arithmatex"><span class="MathJax_Preview">\vec{a} = \{a_1,a_2,a_3\}，其单位向量\vec{a}^0 = \frac{\vec{a}}{|\vec{a}|}</span><script type="math/tex">\vec{a} = \{a_1,a_2,a_3\}，其单位向量\vec{a}^0 = \frac{\vec{a}}{|\vec{a}|}</script></span>
+$$
+\vec{a}^0 = {cosa,cosb,cosc} = {\frac{a_1}{\sqrt{a_1^2+a_2^2+a_3^3}},\frac{a_2}{\sqrt{a_1^2+a_2^2+a_3^3}}，\frac{a_3}{\sqrt{a_1^2+a_2^2+a_3^3}}} \
+\vec{a} = |\vec{a}| \cdot \vec{a}^0
+$$
+<strong>向量坐标</strong></p>
+<p>空间坐标系中存在两点<span class="arithmatex"><span class="MathJax_Preview">M_1(x_1,y_1,z_1),M_2(x_2,y_2,z_2)</span><script type="math/tex">M_1(x_1,y_1,z_1),M_2(x_2,y_2,z_2)</script></span> 则在空间坐标系中表示<span class="arithmatex"><span class="MathJax_Preview">\vec{M_1M_2}</span><script type="math/tex">\vec{M_1M_2}</script></span>向量坐标为{<span class="arithmatex"><span class="MathJax_Preview">x_2-x_1,y_2-y_1,z_2-z_1</span><script type="math/tex">x_2-x_1,y_2-y_1,z_2-z_1</script></span>}</p>
+<p><strong>向量运算</strong></p>
+<ul>
+<li>
+<p>数乘</p>
+</li>
+<li>
+<p>数量积：$\vec{a} \cdot \vec{b} = |\vec{a}|\vec{b}|cos\varphi $   在向量坐标中<span class="arithmatex"><span class="MathJax_Preview">\vec{a} \cdot \vec{b} = a_1b_1+a_2b_2+a_3b_3</span><script type="math/tex">\vec{a} \cdot \vec{b} = a_1b_1+a_2b_2+a_3b_3</script></span> </p>
+</li>
+<li>
+<p>向量积</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>
+<p><span class="arithmatex"><span class="MathJax_Preview">\vec{\lambda}的长度为|\vec{\lambda}| = |\vec{a}| |\vec{b}| sin \varphi</span><script type="math/tex">\vec{\lambda}的长度为|\vec{\lambda}| = |\vec{a}| |\vec{b}| sin \varphi</script></span>  </p>
+</li>
+<li>
+<p><span class="arithmatex"><span class="MathJax_Preview">\vec{\lambda}</span><script type="math/tex">\vec{\lambda}</script></span>的方向垂直与<span class="arithmatex"><span class="MathJax_Preview">\vec{a} 与 \vec{b}相交所在平面</span><script type="math/tex">\vec{a} 与 \vec{b}相交所在平面</script></span></p>
+</li>
+<li>
+<p>向量积使用坐标计算 </p>
+</li>
+</ol>
+<p><span class="arithmatex"><span class="MathJax_Preview">\vec{a}=\{a_1,a_2,a_3\} \vec{\beta}=\{b_1,b_2,b_3\}</span><script type="math/tex">\vec{a}=\{a_1,a_2,a_3\} \vec{\beta}=\{b_1,b_2,b_3\}</script></span> </p>
+<p><span class="arithmatex"><span class="MathJax_Preview">\vec{a} \times \vec{b} = \left[\matrix{\vec{i}&amp;\vec{j}&amp;\vec{c} \\ a_1&amp;a_2&amp;a_3 \\ b_1&amp;b_2&amp;b_3} \right] = \left[
+   \matrix{
+     a_2 &amp; a_3 \\
+     b_2 &amp; b_3
+   }
+   \right] \vec{i} - \left[
+   \matrix{
+     a_1 &amp; a_3 \\
+     b_1 &amp; b_3
+   }
+   \right] \vec{j}+\left[
+   \matrix{
+     a_1 &amp; a_2 \\
+     b_1 &amp; b_2
+   }
+   \right] \vec{k}</span><script type="math/tex">\vec{a} \times \vec{b} = \left[\matrix{\vec{i}&\vec{j}&\vec{c} \\ a_1&a_2&a_3 \\ b_1&b_2&b_3} \right] = \left[
+   \matrix{
+     a_2 & a_3 \\
+     b_2 & b_3
+   }
+   \right] \vec{i} - \left[
+   \matrix{
+     a_1 & a_3 \\
+     b_1 & b_3
+   }
+   \right] \vec{j}+\left[
+   \matrix{
+     a_1 & a_2 \\
+     b_1 & b_2
+   }
+   \right] \vec{k}</script></span></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>
+<h4><strong>空间中曲面与曲线</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p><strong>二维曲线：圆，椭圆，标准，一般，参数方程</strong>
+$$
+圆一般方程：x^2+y^2+Dx+Ey+F = 0  ~~~ (D^2+E^2-4F&gt;0) \
+圆标准方程：(x-a)^2 +(y-b)^2 = R^2  ~~~~  a=-\frac{D}{2} , b=-\frac{E}{2}，R=\frac{D^2+E^2-4F}{4} \
+圆参数方程： x = a+rcos\theta ~~~~ y=b+rsin\theta ~~~(a,b)为圆心，r为半径 \
+$$</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+椭圆标准方程：当焦点在x轴时 ~ \frac{x^2}{a^2}+\frac{y^2}{b^2} = 1 (a&gt;b&gt;0)  \\
+~~~~~~~~~~~~~~~~~~y轴时 ~ \frac{y^2}{a^2}+\frac{x^2}{b^2} = 1 (a&gt;b&gt;0) \\
+椭圆参数方程：R=\frac{a^2-c^2}{a-csin\theta}  ~~~~ a：长半轴长度，c：为焦距的一半，R为曲线上到焦点距离 \\
+~~~~~~P为椭圆上一点，存在 |PF_1|+|PF_2| = 2a
+</div>
+<script type="math/tex; mode=display">
+椭圆标准方程：当焦点在x轴时 ~ \frac{x^2}{a^2}+\frac{y^2}{b^2} = 1 (a>b>0)  \\
+~~~~~~~~~~~~~~~~~~y轴时 ~ \frac{y^2}{a^2}+\frac{x^2}{b^2} = 1 (a>b>0) \\
+椭圆参数方程：R=\frac{a^2-c^2}{a-csin\theta}  ~~~~ a：长半轴长度，c：为焦距的一半，R为曲线上到焦点距离 \\
+~~~~~~P为椭圆上一点，存在 |PF_1|+|PF_2| = 2a
+</script>
+</div>
+<p><strong>空间曲面方程</strong></p>
+<ul>
+<li>
+<p>球面方程</p>
+</li>
+<li>
+<p>一般方程：<span class="arithmatex"><span class="MathJax_Preview">x^2+y^2+z^2+Ax+By+Cz+D=0</span><script type="math/tex">x^2+y^2+z^2+Ax+By+Cz+D=0</script></span></p>
+</li>
+<li>
+<p>标准方程：$(x-a)^2 +(y-b)^2 + (z-c)^2 = R^2 $</p>
+</li>
+<li>
+<p>参数方程：</p>
+</li>
+</ul>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+ \left\{
+    \begin{array}{c}
+     x = r sin\theta cos \varphi \\
+      y = r sin\theta sin \varphi \\
+      z = rcos \theta
+    \end{array}
+  \right. \\
+  \theta:极角（Z轴与r的夹角） ，\varphi:方位角（x轴与r的夹角）
+</div>
+<script type="math/tex; mode=display">
+ \left\{
+    \begin{array}{c}
+     x = r sin\theta cos \varphi \\
+      y = r sin\theta sin \varphi \\
+      z = rcos \theta
+    \end{array}
+  \right. \\
+  \theta:极角（Z轴与r的夹角） ，\varphi:方位角（x轴与r的夹角）
+</script>
+</div>
+<ul>
+<li>
+<p>方程同解变形：方程两端加上（乘以）或减（除以非零）一个式子（数）代替原方程（解集不变）</p>
+</li>
+<li>
+<p>非同解变形：方程两端平方或开方得到的新方程解集比原方程多，或少</p>
+</li>
+<li>
+<p>曲面方程对称性</p>
+</li>
+</ul>
+<p><strong>旋转曲面</strong></p>
+<p>曲线绕它所在的平面的一条直线L旋转一周所生成的曲面</p>
+<p><em>旋转轴变量不变，参数变为 <span class="arithmatex"><span class="MathJax_Preview">\pm\sqrt{x^2+z^2}</span><script type="math/tex">\pm\sqrt{x^2+z^2}</script></span></em>
+$$
+曲线方程：f(y,z)=0 \
+绕z轴生成的旋转曲面： f(\pm\sqrt{x^2+y^2},z) = 0 \ 
+绕y轴生成的旋转曲面： f(y,\pm\sqrt{x^2+z^2}) = 0  \ 
+...
+$$</p>
+<p><strong>空间曲线方程</strong></p>
+<ul>
+<li>
+<p>一般曲线方程（两个曲面相交，其解为曲线方程上的点）
+$$
+C：\left{
+\begin{array}{c}
+ F(x,y,z) = 0 \
+ G(x,y,z) = 0
+\end{array}
+\right.
+$$</p>
+</li>
+<li>
+<p>参数方程</p>
+</li>
+</ul>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+C：\left\{
+\begin{array}{c}
+ x = x(t),\\
+ y= y(t),\\
+ z=z(t)
+\end{array}
+\right. \\
+(a \leq t \leq b)
+</div>
+<script type="math/tex; mode=display">
+C：\left\{
+\begin{array}{c}
+ x = x(t),\\
+ y= y(t),\\
+ z=z(t)
+\end{array}
+\right. \\
+(a \leq t \leq b)
+</script>
+</div>
+</blockquote>
+<ul>
+<li>
+<h4><strong>空间平面与直线</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p><strong>空间平面确定（法向量确定）</strong></p>
+<ol>
+<li>不在同一直线上任意三个点（待定系数）</li>
+<li>直线到直线外的一点（点法方程）</li>
+<li>两条平行的直线（求两条直线的法向量）</li>
+</ol>
+<p><strong>点法式方程</strong>（直线到直线外一点）
+$$
+Ax+By+Cz+D = 0 ~~~~~其中A，B，C不全为0 \ 
+\vec{n} ={A,B,C} ~~~ 为平面中一个法向量
+$$</p>
+<p><strong>平面截距方程</strong></p>
+<ol>
+<li>D=0时，平面包含原点</li>
+<li>A = 0 时，表示平面平行x轴</li>
+<li>A=0，B=0时，平面平行于Oxy</li>
+</ol>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+平面截距方程：\frac{x}{a} + \frac{y}{b} + \frac{z}{c} = 1 \\  
+\\ 
+a = \frac{-D}{A} ~~~  b = \frac{-D}{B} ~~~  c = \frac{-D}{C}
+</div>
+<script type="math/tex; mode=display">
+平面截距方程：\frac{x}{a} + \frac{y}{b} + \frac{z}{c} = 1 \\  
+\\ 
+a = \frac{-D}{A} ~~~  b = \frac{-D}{B} ~~~  c = \frac{-D}{C}
+</script>
+</div>
+<p><strong>点P<span class="arithmatex"><span class="MathJax_Preview">(x_0,y_0,z_0)</span><script type="math/tex">(x_0,y_0,z_0)</script></span>到平面Ax + By + Cz + D = 0距离</strong>
+$$
+d = \frac{|Ax_0 + By_0 + Cz_0 +D|}{\sqrt{A^2+B^2+C^2}}
+$$</p>
+<p><strong>平面夹角</strong>：法向量数量积与模比值</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+两平面法向量\vec{n_1} =\{A_1,B_1,C_1\} ~~~~\vec{n_2}=\{A_2,B_2,C_2\} \\
+cos\theta = \frac{|A_1A_2+B_1B_2+C_1C_2|}{\sqrt{A_1^2+B_1^2+C_1^2}\sqrt{A_2^2+B_2^2+C_2^2}}  = \frac{\vec{n_1} \cdot \vec{n_2}} {|n_1| \cdot |n_2|} \\ 
+~~~1.平面垂直充要条件 A_1A_2+B_1B_2+C_1C_2 = 0 \\
+~~~2.平面平行充要条件 \frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2}
+</div>
+<script type="math/tex; mode=display">
+两平面法向量\vec{n_1} =\{A_1,B_1,C_1\} ~~~~\vec{n_2}=\{A_2,B_2,C_2\} \\
+cos\theta = \frac{|A_1A_2+B_1B_2+C_1C_2|}{\sqrt{A_1^2+B_1^2+C_1^2}\sqrt{A_2^2+B_2^2+C_2^2}}  = \frac{\vec{n_1} \cdot \vec{n_2}} {|n_1| \cdot |n_2|} \\ 
+~~~1.平面垂直充要条件 A_1A_2+B_1B_2+C_1C_2 = 0 \\
+~~~2.平面平行充要条件 \frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2}
+</script>
+</div>
+<hr />
+<p><strong>空间直线方程</strong></p>
+<ul>
+<li>对称方程</li>
+</ul>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+对称式方程 ~~~ \frac{x-x_0}{l} = \frac{y-y_0}{m} = \frac{z-z_0}{n}  \\
+其中\vec{v}=\{l,m,n\} 为直线方程方向向量 \\
+</div>
+<script type="math/tex; mode=display">
+对称式方程 ~~~ \frac{x-x_0}{l} = \frac{y-y_0}{m} = \frac{z-z_0}{n}  \\
+其中\vec{v}=\{l,m,n\} 为直线方程方向向量 \\
+</script>
+</div>
+<ul>
+<li>
+<p>参数方程
+  $$
+   \frac{x-x_0}{l} = \frac{y-y_0}{m} = \frac{z-z_0}{n} = t \
+  \
+  L：\left{
+    \begin{array}{c}
+     x = x_0+lt,\
+     y= y_0+mt,\
+     z=z_0+nt
+    \end{array}
+    \right. \
+    (-\infty &lt; t &lt; +\infty)
+  $$</p>
+</li>
+<li>
+<p>一般方程
+  $$
+   L：\left{
+    \begin{array}{c}
+    A_1x+B_1y+C_1z+D_1 = 0 \
+     A_2x+B_2y+C_1z+D_2 = 0
+    \end{array}
+    \right.
+  $$</p>
+</li>
+</ul>
+<p><strong>直线夹角</strong>
+$$
+\vec{v_1} = {l_1,m_1,n_1},~~~ \vec{v_2} = {l_2,m_2,n_2}\
+cos\theta = \frac{|l_1l_2+m_1m_2+n_1n_2|}{\sqrt{l_1^2+m_1^2+n_1^2}\sqrt{l_2^2+m_2^2+n_2^2}}
+$$</p>
+</blockquote>
+<ul>
+<li>
+<h4><strong>二次曲面</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p><strong>二次曲面</strong>
+$$
+球面： (x-x_0)^2 + (y-y_0)^2 + (z - z_0)^2 = R^2 \
+椭球面： \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1 \quad  a&gt;0 ,\; b&gt;0, \;c&gt;0 \
+抛物面： z = \frac{x^2}{a^2} + \frac{y^2}{b^2} \
+圆锥面：z^2 = \frac{x^2}{a^2} + \frac{y^2}{b^2}
+$$
+</p>
+</blockquote>
+</body>
+</html>

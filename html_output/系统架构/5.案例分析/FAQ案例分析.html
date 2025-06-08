@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FAQ案例分析</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { color: #0366d6; text-decoration: none; }
+        code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f6f8fa; padding: 10px; border-radius: 4px; overflow: auto; }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h2>FAQ案例分析</h2>
+<ul>
+<li>
+<h4><strong>架构设计风格及优缺点</strong></h4>
+</li>
+<li>
+<p>批处理风格：处理批量数据，<strong>按照顺序依次处理数据</strong></p>
+<p>特点:</p>
+<ol>
+<li>按照顺序依次处理数据;</li>
+<li><strong>数据是完整、有序、独立的</strong>。</li>
+<li>适用于处理大量数据的场景，提高效率</li>
+</ol>
+<p>缺点:</p>
+<ol>
+<li>不适合实时性要求较高的场景;</li>
+<li>存在数据冲突或者数据不完整</li>
+</ol>
+</li>
+<li>
+<p>管道-过滤器：<strong>面向数据流，应用在编译系统</strong></p>
+<p>特点:</p>
+<ol>
+<li>数据流方向<strong>单向，不可逆</strong>（处理逻辑更加清晰明）</li>
+<li>数据流经过多个过滤器进行筛选和处理;</li>
+<li>适用于数据流处理较为复杂的场景。</li>
+</ol>
+<p>缺点:</p>
+<ol>
+<li>
+<p>增加系统的复杂度;</p>
+</li>
+<li>
+<p>数据发生变化，需要重新处理，增加了系统的可修改性;</p>
+</li>
+<li>
+<p>需要保证各个过滤器之间的协作一致性。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>面对对象：事物抽象成对象，通过对象之间的交互实现系统的功能</p>
+<p>优点:</p>
+<ol>
+<li>系统的代码更加结构化和清晰</li>
+<li>对象都有自己的行为和属性，可以独立开发、测试和维护，提高了开发效率</li>
+<li>继承、多态，增加了系统的可扩展性和可维护性</li>
+</ol>
+<p>缺点:</p>
+<ol>
+<li>对比其他风格较为复杂，需要更多的开发和维护成本</li>
+<li>创建、销毁、更新增加了系统的资源开销</li>
+<li>继承、多态导致代码冗余</li>
+</ol>
+</li>
+<li>
+<p>事件驱动风格：通过发布事件来通知部件</p>
+<p>优点:</p>
+<ol>
+<li>过程异步，提高系统的响应速度</li>
+<li>事件循环的方式，保证了系统的稳定性和可靠性</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>结构较为复杂</li>
+<li>增加了系统的内存开销和响应</li>
+<li>存在信息丢失或者冲突等</li>
+</ol>
+</li>
+<li>
+<p>分层风格：按照功能划分成不同的层次结构</p>
+<p>优点：</p>
+<ol>
+<li>提高了系统的灵活性和可维护性</li>
+<li>相邻层次通过接口进行通信，保证系统的安全性和可靠性</li>
+<li>支持软件复用</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>通讯开销大，存在延迟和信息丢失</li>
+</ol>
+</li>
+<li>
+<p>虚拟机/解释器风格：逐行解释执行</p>
+<p>优点：</p>
+<ol>
+<li>调试和修改比较方便，逐行执行修改和定位问题</li>
+<li>适用于简单系统</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>运行速度较慢，不适合处理大规模、复杂的逻辑</li>
+<li>需要消耗大量的内存和计算资源</li>
+</ol>
+</li>
+<li>
+<h4><strong>嵌入式系统软件架构</strong></h4>
+</li>
+<li>
+<p>嵌入式操作系统特点：可裁剪，可移值，强实时，强紧凑，高质量代码，强定制，标准接口，强稳定，弱交互，强确定，操作简洁，适用性强</p>
+</li>
+<li>嵌入式系统实时性调度算法<ol>
+<li>EDF：最早截止时间</li>
+<li>LLF：最低松弛优先</li>
+<li>RMS：单调速率</li>
+</ol>
+</li>
+<li>嵌入式系统多任务通信方法<ol>
+<li>共享内存</li>
+<li>PV信号量</li>
+<li>消息队列（缓冲区）</li>
+<li>Socket</li>
+<li>Signals：中断处理（异常处理）</li>
+</ol>
+</li>
+<li>嵌入式数据库<ol>
+<li>内存（eXtremeDB），文件（SQLite），网络</li>
+<li>只允许应用程序访问</li>
+</ol>
+</li>
+<li>
+<p>嵌入式系统软件架构设计方法</p>
+<ol>
+<li>ABSD：自顶向下、递归细化，商业、质量和功能需求的组合驱动软件架构设计</li>
+<li>ADD：属性驱动软件设计</li>
+<li>DARTS：实时系统拆解多个并发任务</li>
+</ol>
+</li>
+<li>
+<h4><strong>通信系统架构设计</strong></h4>
+</li>
+<li></li>
+</ul>
+</body>
+</html>

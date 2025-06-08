@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>多元函数的微分学</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { color: #0366d6; text-decoration: none; }
+        code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f6f8fa; padding: 10px; border-radius: 4px; overflow: auto; }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<h2>多元函数的微分学</h2>
+<ul>
+<li>
+<h4><strong>多元函数</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p>存在三个变量x，y，z 当变量x，y在一定范围变动时，对于x，y都有与z对应的值，则变量z是<strong>变量x，y的二元函数</strong>，记作 z = f(x,y) 或  z = z(x,y)</p>
+<p><strong>复合函数</strong>（函数自变量是其他函数的因变量）
+$$
+u = f(v) \
+v = g(x,y) \ 
+u = F(x,y) = f(g(x,y))
+$$</p>
+<p><strong>多元方程的隐函数</strong> （自变量之间存在函数关系，该函数自变量，因变量恰好是<strong>原方程的解</strong>）
+$$
+二元方程 F(x,y) = 0 \; x,y是二元方程的解 \ 解集中存在函数关系y=f(x) \; \则y = f(x) 是二元方程F(x,y) = 0 的隐函数
+$$</p>
+<p><strong>多元函数的极限与连续</strong>
+$$
+lim_{(x,y) \to (x_0,y_0)} f(x,y) = A \ 
+ 当函数自变量任意方向无限趋近于点(x_0,y_0)时，此时f(x,y) 的值也无限接近实数A \ 
+$$
+<strong>函数连续 =  存在极限 + 极限值该点函数值</strong></p>
+<p><strong>偏导数与极限</strong>
+$$
+\triangle F = F(x_0 + \triangle x,y_0) - F(x_0,y_0) \  \
+lim_{\triangle x \to 0} \frac{\triangle F}{\triangle x} = lim_{\triangle x \to 0} \frac{  F(x_0 + \triangle x,y_0) - F(x_0,y_0)}{\triangle x} \ \ 
+偏导数  f_x(x_0,y_0) 或 \frac{\partial f}{\partial x} |_{x=x_0,y=y_0}
+$$</p>
+<p><strong>偏导数</strong>： 多元函数上某点沿某个自变量的变化率</p>
+<p><strong>全微分：</strong>$dz = f(x+\triangle x,y+\triangle y ) -f(x,y) = \frac{\partial z}{\partial x} dx + \frac{\partial z}{\partial y} dy $ </p>
+<ul>
+<li>dx，dy表示关于自变量x，y的微分（增量符号，等同于<span class="arithmatex"><span class="MathJax_Preview">\triangle x ,\triangle y</span><script type="math/tex">\triangle x ,\triangle y</script></span>)</li>
+<li>全微分 = 函数连续 + 存在自变量偏导数</li>
+<li>全增量：<span class="arithmatex"><span class="MathJax_Preview">\triangle z =f(x+\triangle x,y+\triangle y) - f(x,y)</span><script type="math/tex">\triangle z =f(x+\triangle x,y+\triangle y) - f(x,y)</script></span></li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<h4><strong>复合函数与隐函数的导数和偏导数</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p><strong>复合函数链式求导：</strong>
+$$
+\frac{\partial z}{\partial x} = \frac{\partial z}{\partial u} \cdot \frac{\partial u}{\partial x} + \frac{\partial z}{\partial v} \cdot \frac{\partial v}{\partial x} \
+$$
+<strong>隐函数的导数和偏导数：</strong>
+$$
+方程F(x,y)=0的隐函数 y=f(x)求导\
+\frac{dy}{dx} = -\frac{F_x}{F_y} \ 
+三元方程F(x,y,z) = 0 的隐函数 z =f(x,y)求导\
+\frac{\partial z}{\partial x} = -\frac{F_x}{F_z},\frac{\partial z}{\partial y} = -\frac{F_y}{F_z}
+$$
+</p>
+</blockquote>
+<ul>
+<li>
+<h4><strong>偏导数应用</strong></h4>
+</li>
+</ul>
+<blockquote>
+<p><strong>多元函数极值计算</strong></p>
+<ul>
+<li>极值：函数指定义域U总有 <span class="arithmatex"><span class="MathJax_Preview">f(x,y) &lt; f(x_0,y_0)</span><script type="math/tex">f(x,y) < f(x_0,y_0)</script></span>成立，则称<span class="arithmatex"><span class="MathJax_Preview">f(x_0,y_0)</span><script type="math/tex">f(x_0,y_0)</script></span>为f(x,y)的一个极大值（可能存在）</li>
+</ul>
+<p>最值：函数在其有效的定义域D内总有<span class="arithmatex"><span class="MathJax_Preview">f(x,y) &lt; f(x_0,y_0)</span><script type="math/tex">f(x,y) < f(x_0,y_0)</script></span>成立（函数连续，定义域闭区间 一定存在）</p>
+<p><strong>最值判断：寻找函数边界值，驻点，和不可导点综合判断</strong></p>
+<ul>
+<li>
+<p>极值必要条件：函数f(x,y)在点P(x,y)处的两个偏导数都存在。<span class="arithmatex"><span class="MathJax_Preview">f_x(x,y) = 0, f_y(x,y) = 0</span><script type="math/tex">f_x(x,y) = 0, f_y(x,y) = 0</script></span>，<strong>点(x,y)为函数f(x,y)的驻点</strong></p>
+</li>
+<li>
+<p><span class="arithmatex"><span class="MathJax_Preview">(x_0,y_0)是函数f(x,y)的驻点，则有A=f_{xx}(x_0,y_0)，B=f_{xy}(x_0,y_0)，C=f_{yy}(x_0,y_0)， \triangle=B^2-AC</span><script type="math/tex">(x_0,y_0)是函数f(x,y)的驻点，则有A=f_{xx}(x_0,y_0)，B=f_{xy}(x_0,y_0)，C=f_{yy}(x_0,y_0)， \triangle=B^2-AC</script></span></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\triangle &lt;0, A&lt;0</span><script type="math/tex">\triangle <0, A<0</script></span></th>
+<th style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">(x_0,y_0)</span><script type="math/tex">(x_0,y_0)</script></span>为极大值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\triangle &lt;0, A&gt;0</span><script type="math/tex">\triangle <0, A>0</script></span></td>
+<td style="text-align: center;"><strong><span class="arithmatex"><span class="MathJax_Preview">(x_0,y_0)</span><script type="math/tex">(x_0,y_0)</script></span>为极小值</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\triangle &gt;0, A&lt;0</span><script type="math/tex">\triangle >0, A<0</script></span></td>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">(x_0,y_0)</span><script type="math/tex">(x_0,y_0)</script></span>不是极值点</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\triangle =0</span><script type="math/tex">\triangle =0</script></span></td>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">(x_0,y_0)</span><script type="math/tex">(x_0,y_0)</script></span>不做判断</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>条件极值</li>
+</ul>
+<p><strong>拉格朗日乘数法：</strong> 设二元函数f(x,y)和<span class="arithmatex"><span class="MathJax_Preview">\varphi(x,y)</span><script type="math/tex">\varphi(x,y)</script></span>在所考虑的区域内具有连续的偏导数，且<span class="arithmatex"><span class="MathJax_Preview">\varphi_x(x,y),\varphi_y(x,y)</span><script type="math/tex">\varphi_x(x,y),\varphi_y(x,y)</script></span>不同时为零。构造拉格日朗函数：
+  $$
+  L(x,y) = f(x,y)+\lambda\varphi(x,y) \<br />
+  其中\lambda为拉格朗日乘数，L(x,y) 为拉格朗日函数 \; \varphi(x,y)  为约束条件 \ \</p>
+<p>构造求极值方程组 \
+  \left{
+  \begin{array}{c}
+  \frac{\partial L}{\partial x} = f_x(x,y) + \lambda\varphi_x(x,y) = 0, \
+  \frac{\partial L}{\partial y} = f_y(x,y) + \lambda\varphi_y(x,y) = 0, \
+  \varphi(x,y) = 0,
+  \end{array}
+  \right.
+  \ 其解是可疑极值点
+  $$</p>
+<ul>
+<li>
+<p><strong>几何应用</strong></p>
+</li>
+<li>
+<p>空间曲线上某点斜率（切向量）与法平面
+     $$
+     L:\left{
+     \begin{array}{c}
+     x=x(t)\
+     y=y(t) \
+     z=z(t)
+     \end{array}
+     \right. \
+     设曲线L上的点P(x_0,y_0,z_0)具有连续偏导数且不同时为0，\则点P上方向向量为\vec{s} = {x^<code>(t_0),y^</code>(t_0),z^<code>(t_0)\}，\\P上法平面 x^</code>(t_0)(x-x_0)+y^<code>(t_0)(y-y_0)+z^</code>(z_0)(z-z_0) = 0
+     $$</p>
+</li>
+<li>
+<p>空间曲面的切平面与法线
+     $$
+     \Gamma： \left{
+        \begin{array}{c}
+        x=x(t)\
+        y=y(t) \
+        z=z(t)
+        \end{array}
+        \right. \
+        t = t_0，即x_0=x(t_0)，y_0=y(t_0)，z_0=z(t_0) \
+        \because F(x(t),y(t),z(t)) \equiv 0 ~~~ \therefore \frac{d}{dt}F(x(t),y(t),z(t))\equiv 0 \
+        \vec{n} = {F_x(x_0,y_0,z_0),F_y(x_0,y_0,z_0),F_z(x_0,y_0,z_0)} 为曲面\Sigma在点P处的法向量 \同时还是该点方向向量
+     $$</p>
+</li>
+<li>
+<p><strong>方向导数</strong>（数量积）</p>
+<p>偏导数<span class="arithmatex"><span class="MathJax_Preview">\frac{\partial z}{\partial  x}，\frac{\partial z}{\partial y}</span><script type="math/tex">\frac{\partial z}{\partial  x}，\frac{\partial z}{\partial y}</script></span> 分别是该函数在(x,y)处沿x，y轴方向的变化率，方向导数为函数沿<strong>某个向量</strong>的变化率</p>
+</li>
+</ul>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+  \frac{\partial f}{\partial l} |_{（x_0,y_0）} 表示为点(x_0,y_0)沿l方向的导数 \\ \\ 
+  f(x,y)在(x_0,y_0)点可微，且方向导数存在则：
+  \frac{\partial z}{\partial l} |_{(x_0,y_0)}= \frac{\partial z}{\partial x} cos\alpha +\frac{\partial z}{\partial y} cos \beta \\  其中\alpha,\beta是l与x轴，y轴的正向夹角 ~~~~\alpha + \beta  = \frac{\pi }{2}\\ 
+   l的方向向量{cosa,cosb}
+</div>
+<script type="math/tex; mode=display">
+  \frac{\partial f}{\partial l} |_{（x_0,y_0）} 表示为点(x_0,y_0)沿l方向的导数 \\ \\ 
+  f(x,y)在(x_0,y_0)点可微，且方向导数存在则：
+  \frac{\partial z}{\partial l} |_{(x_0,y_0)}= \frac{\partial z}{\partial x} cos\alpha +\frac{\partial z}{\partial y} cos \beta \\  其中\alpha,\beta是l与x轴，y轴的正向夹角 ~~~~\alpha + \beta  = \frac{\pi }{2}\\ 
+   l的方向向量{cosa,cosb}
+</script>
+</div>
+<ol>
+<li>
+<p><strong>梯度</strong>（方向导数的向量，方向导数取最大值）</p>
+<p>当点P固定时，cosa与cosb 最大值为1时方向导数等于梯度</p>
+</li>
+</ol>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+ gradf(x,y)= \{\frac{\partial z}{\partial x}  ，\frac{\partial z}{\partial y} \}\\
+</div>
+<script type="math/tex; mode=display">
+ gradf(x,y)= \{\frac{\partial z}{\partial x}  ，\frac{\partial z}{\partial y} \}\\
+</script>
+</div>
+</blockquote>
+</body>
+</html>
